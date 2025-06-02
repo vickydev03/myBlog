@@ -26,6 +26,6 @@ export default function RootLayout({
         <Navbar />
         {children}
       </div>
-    </ThemeProvider>
+    </ThemeProvider> 
   );
 }
