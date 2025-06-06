@@ -5,7 +5,7 @@ import Navbar from "./_component/Navbar";
 import { ThemeProvider } from "next-themes";
 import { useLenis } from "./_hooks/useLenis";
 const lora = Lora({
-  variable: "--font-geist-sans",
+  variable: "--font-lora",
   subsets: ["latin"],
 });
 

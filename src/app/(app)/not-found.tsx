@@ -1,8 +1,11 @@
 "use client";
 import { Home, ArrowLeft } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const NotFound = () => {
+
+  const path=usePathname()
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 flex items-center justify-center relative overflow-hidden">
       {/* Animated background elements */}
@@ -31,7 +34,7 @@ const NotFound = () => {
             Oops! Page Not Found
           </h2>
           <p className="text-gray-600 text-lg md:text-xl font-light leading-relaxed max-w-2xl mx-auto">
-            The page you &apos re looking for might have been moved, deleted, or
+            The page you are looking for might have been moved, deleted, or
             perhaps you just mistyped the URL.
           </p>
         </div>
@@ -63,13 +66,13 @@ const NotFound = () => {
           <ul className="text-gray-600 space-y-2 text-sm md:text-base">
             <li>• Check if the URL is typed correctly</li>
             <li>• Go back to the previous page</li>
-            <li>• Visit our homepage to find what you &apos re looking for</li>
+            <li>• Visit our homepage to find what you are looking for</li>
           </ul>
         </div>
 
         {/* Error details */}
         <div className="mt-8 text-gray-400 text-sm">
-          <p>Error 404 • {location.pathname}</p>
+          <p>Error 404 • {path}</p>
         </div>
       </div>
 

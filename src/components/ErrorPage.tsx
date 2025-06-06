@@ -1,6 +1,6 @@
-import React from 'react';
-import { RefreshCw, Home, AlertCircle } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import React from "react";
+import { RefreshCw, Home, AlertCircle } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 interface ErrorPageProps {
   error?: Error & { digest?: string };
@@ -17,11 +17,11 @@ const ErrorPage = ({ error, reset }: ErrorPageProps) => {
   };
 
   const handleGoHome = () => {
-    window.location.href = '/';
+    window.location.href = "/";
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white flex items-center justify-center p-4 relative">
       <div className="max-w-md w-full text-center">
         {/* Error Icon with Animation */}
         <div className="mb-8 flex justify-center">
@@ -40,16 +40,19 @@ const ErrorPage = ({ error, reset }: ErrorPageProps) => {
               Something went wrong
             </h1>
             <p className="text-gray-600 text-lg leading-relaxed">
-              We encountered an unexpected error. Don &apos t worry, our team has been notified and we &apos re working to fix it.
+              We encountered an unexpected error. Do not worry, our team
+              has been notified and we are working to fix it.
             </p>
           </div>
 
           {/* Error Details (if available) */}
           {error && (
             <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 text-left">
-              <h3 className="text-sm font-medium text-gray-700 mb-2">Error Details:</h3>
+              <h3 className="text-sm font-medium text-gray-700 mb-2">
+                Error Details:
+              </h3>
               <p className="text-xs text-gray-500 font-mono break-all">
-                {error.message || 'Unknown error occurred'}
+                {error.message || "Unknown error occurred"}
               </p>
               {error.digest && (
                 <p className="text-xs text-gray-400 mt-1">
@@ -96,8 +99,14 @@ const ErrorPage = ({ error, reset }: ErrorPageProps) => {
 
         {/* Decorative Elements */}
         <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-gray-200 rounded-full opacity-60 animate-bounce"></div>
-        <div className="absolute top-1/3 right-1/4 w-1 h-1 bg-gray-300 rounded-full opacity-40 animate-bounce" style={{ animationDelay: '0.5s' }}></div>
-        <div className="absolute bottom-1/4 left-1/3 w-1.5 h-1.5 bg-gray-200 rounded-full opacity-50 animate-bounce" style={{ animationDelay: '1s' }}></div>
+        <div
+          className="absolute top-1/3 right-1/4 w-1 h-1 bg-gray-300 rounded-full opacity-40 animate-bounce"
+          style={{ animationDelay: "0.5s" }}
+        ></div>
+        <div
+          className="absolute bottom-1/4 left-1/3 w-1.5 h-1.5 bg-gray-200 rounded-full opacity-50 animate-bounce"
+          style={{ animationDelay: "1s" }}
+        ></div>
       </div>
     </div>
   );

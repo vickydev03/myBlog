@@ -21,7 +21,7 @@ export default buildConfig({
     livePreview: {
       collections: ["articles"],
       url: ({ data }) => {
-        return `http://localhost:3000/post/${data.id}`; // Adjust based on your frontend route
+        return `http://localhost:3000/post/${data.slug}`; // Adjust based on your frontend route
       },
       breakpoints: [
         {

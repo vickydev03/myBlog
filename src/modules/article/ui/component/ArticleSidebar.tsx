@@ -12,6 +12,7 @@ interface DataProps {
   id: string;
   title: string;
   poster?: string | Media | null;
+  slug:string
 }
 
 function ArticleSidebar() {
@@ -76,7 +77,7 @@ function ArticleSidebar() {
                 {data.totalDocs > 0 &&
                   data.docs.map((e: DataProps) => (
                     <motion.div key={e.id} variants={itemVariants}>
-                      <Link href={`/post/${e.id}`} key={e.id}>
+                      <Link href={`/post/${e.slug}`} key={e.id}>
                         <motion.div
                           key={e.id}
                           variants={itemVariants}

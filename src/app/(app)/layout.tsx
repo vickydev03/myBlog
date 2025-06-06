@@ -7,7 +7,7 @@ import { Toaster } from "@/components/ui/sonner";
 import PageTransition from "@/components/Pagetransition";
 
 const lora = Lora({
-  variable: "--font-geist-sans",
+  variable: "--font-lora",
   subsets: ["latin"],
 });
 

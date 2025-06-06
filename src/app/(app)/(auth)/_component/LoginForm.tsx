@@ -120,6 +120,8 @@ function LoginForm() {
                         />
                         <button
                           type="button"
+                          aria-label={showPassword ? "Hide password" : "Show password"}
+// +                          ta
                           className="absolute right-4 top-4 text-slate-400 hover:text-slate-600 transition-colors"
                           onClick={() => setShowPassword((e) => !e)}
                         >

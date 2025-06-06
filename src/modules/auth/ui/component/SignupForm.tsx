@@ -25,7 +25,7 @@ import { toast } from "sonner";
 function SignupForm() {
   const router = useRouter();
 
-  const [showPassword, setShowPassword] = useState(true);
+  const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(true);
   const form = useForm<z.infer<typeof registerSchema>>({
     resolver: zodResolver(registerSchema),

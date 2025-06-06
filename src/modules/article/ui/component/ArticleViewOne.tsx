@@ -10,7 +10,6 @@ import Image from "next/image";
 import { format } from "date-fns";
 import { Media } from "@/payload-types";
 import { motion } from "motion/react";
-import { notFound } from "next/navigation";
 // import {Richt}
 const monts = Inter({
   weight: ["800"],
@@ -63,10 +62,7 @@ function ArticleViewOne({ slug }: { slug: string }) {
 
   const formattedDate = format(data.createdAt, "dd MMM yyyy");
 
-  if (!data) {
-    notFound();
-    // return <p>ajay</p>
-  }
+ 
 
   return (
     <motion.div

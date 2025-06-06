@@ -13,7 +13,7 @@ export default function GlobalError({
   //   // Re-throw to trigger not-found.js instead
   //   notFound();
   // }
-  if (error.message == "This post is not found") {
+  if (error.message == "This post is not found"||error.cause === 'NOT_FOUND'||error.name === 'NotFoundError') {
     // notFound();
     return <NotFound />;
   }

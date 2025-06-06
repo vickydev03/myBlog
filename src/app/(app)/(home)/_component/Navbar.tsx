@@ -40,7 +40,7 @@ function Navbar() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault(); // Only here, for form submission
     // console.log("Form submitted with:", value);
-    if (path === "search") {
+    if (path === "/search") {
       setFilters({ search: value });
     } else {
       router.push(`/search?search=${value}`);

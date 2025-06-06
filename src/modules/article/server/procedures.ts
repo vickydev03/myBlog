@@ -9,7 +9,7 @@ export const ArticleRouter = createTRPCRouter({
   getOne: baseProcedure
     .input(
       z.object({
-        slug: z.string().nullable(),
+        slug: z.string(),
       })
     )
     .query(async ({ ctx, input }) => {

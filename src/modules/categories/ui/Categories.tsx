@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Inter } from "next/font/google";
 const intel = Inter({
-  variable: "--font-geist-sans",
+  variable: "--font-lora",
   subsets: ["latin"],
 });
 import { cn } from "@/lib/utils";

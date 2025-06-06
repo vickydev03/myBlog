@@ -6,13 +6,18 @@ import { Lora } from "next/font/google";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 const lora = Lora({
-  variable: "--font-geist-sans",
+  variable: "--font-lora",
   subsets: ["latin"],
 });
 
 function SignupView() {
   return (
-    <div className={cn("min-h-screen flex font bg-gradient-to-br from-slate-50 via-emerald-50 to-teal-100",lora.className)}>
+    <div
+      className={cn(
+        "min-h-screen flex font bg-gradient-to-br from-slate-50 via-emerald-50 to-teal-100",
+        lora.className
+      )}
+    >
       {/* Left Section - Form */}
       <div className="flex-1 flex items-center justify-center p-8 lg:p-12">
         <div className="w-full max-w-lg space-y-8">
@@ -75,9 +80,9 @@ function SignupView() {
       {/* Right Section - Image */}
       <div className="hidden lg:flex flex-1 relative overflow-hidden">
         <Image
-        loading="lazy"
-        width={100}
-        height={100}
+          fill
+          priority
+          sizes="(max-width: 1024px) 0vw, 50vw"
           src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
           alt="Beginning the journey of learning about finance, technology and business"
           className="absolute inset-0 w-full h-full object-cover"
@@ -90,7 +95,7 @@ function SignupView() {
                 Start Your Learning Journey
               </h2>
               <p className="text-emerald-100 text-lg leading-relaxed">
-                We &apos re beginners just like you, sharing what we learn about
+                We are beginners just like you, sharing what we learn about
                 finance, technology, and AI. Every blog post is a step forward
                 in our learning adventure.
               </p>
@@ -126,24 +131,26 @@ function SignupView() {
             <div className="bg-emerald-900/40 backdrop-blur-sm rounded-xl p-6 border border-emerald-700/30">
               <div className="space-y-3">
                 <h3 className="text-xl font-bold text-white">
-                  What You &apos ll Get
+                  What You wll Get
                 </h3>
                 <ul className="space-y-2 text-emerald-100 text-sm">
                   <li className="flex items-center space-x-2">
                     <div className="w-1.5 h-1.5 rounded-full bg-emerald-400"></div>
-                    <span>
+                    <span className="text-emerald-100 font-medium">
                       Weekly blog posts about our learning discoveries
                     </span>
                   </li>
                   <li className="flex items-center space-x-2">
                     <div className="w-1.5 h-1.5 rounded-full bg-emerald-400"></div>
-                    <span>
+                    <span className="text-emerald-100 font-medium">
                       Beginner-friendly explanations of complex topics
                     </span>
                   </li>
                   <li className="flex items-center space-x-2">
                     <div className="w-1.5 h-1.5 rounded-full bg-emerald-400"></div>
-                    <span>A supportive community of fellow learners</span>
+                    <span className="text-emerald-100 font-medium">
+                      A supportive community of fellow learners
+                    </span>
                   </li>
                 </ul>
               </div>

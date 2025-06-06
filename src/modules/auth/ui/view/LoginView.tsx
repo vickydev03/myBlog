@@ -1,9 +1,9 @@
 // "use client"
-import Image from 'next/image'
-import React from 'react'
+import Image from "next/image";
+import React from "react";
 import { TrendingUp, BarChart3, Brain, Zap } from "lucide-react";
 import Link from "next/link";
-import LoginForm from '@/app/(app)/(auth)/_component/LoginForm';
+import LoginForm from "@/app/(app)/(auth)/_component/LoginForm";
 // import { useRouter } from 'next/navigation';
 
 function LoginView() {
@@ -70,12 +70,13 @@ function LoginView() {
       {/* Right Section - Image */}
       <div className="hidden lg:flex flex-1 relative overflow-hidden">
         <Image
-          width={100}
-          loading="lazy"
-          height={100}
+          width={800}
+          height={600}
+          priority
           src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
           alt="Learning about finance and technology through blogging and research"
           className="absolute inset-0 w-full h-full object-cover"
+         sizes="(max-width: 1024px) 100vw, 50vw"
         />
         <div className="absolute inset-0 bg-gradient-to-br from-blue-900/70 to-indigo-900/90"></div>
         <div className="absolute inset-0 flex flex-col justify-end p-12">
@@ -144,7 +145,7 @@ function LoginView() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default LoginView
+export default LoginView;

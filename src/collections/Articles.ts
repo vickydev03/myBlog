@@ -27,7 +27,7 @@ export const Articles: CollectionConfig = {
   versions: {
     drafts: {
       autosave: {
-        interval: 100,
+        interval: 500,
       },
       schedulePublish: false,
       validate: false,
@@ -113,7 +113,8 @@ export const Articles: CollectionConfig = {
       type: "number",
       required: true,
     },
-  ],hooks:{
+  ],
+  hooks: {
     beforeValidate: [
       async ({ data }) => {
         if (typeof data !== "object") return data;
@@ -129,13 +130,11 @@ export const Articles: CollectionConfig = {
             .toLowerCase()
             .trim()
             .replace(/\s+/g, "-")
-            // .replace(/[^a-z0-9\-]/g, ""); 
+            .replace(/[^a-z0-9\-]/g, "");
         }
 
         return data;
       },
     ],
-      
-    }
-  
+  },
 };
