@@ -9,6 +9,16 @@ import { InboxIcon } from "lucide-react";
 import Link from "next/link";
 import Footer from "@/app/(app)/(home)/_component/Footer";
 // import { trpc } from "@/trpc/server";
+// interface Props {
+//   id: string;
+//   slug: string;
+//   author: User & { image: Media };
+//   description: string;
+//   poster: Media;
+//   title: string;
+//   tags: Tag[];
+//   createdAt: Date;
+// }
 
 function ArticlesList({ categorySlug }: { categorySlug?: string }) {
   const trpc = useTRPC();
@@ -29,6 +39,7 @@ function ArticlesList({ categorySlug }: { categorySlug?: string }) {
         }
       )
     );
+  console.log(data, "server data");
 
   const loadMoreRef = useRef<HTMLDivElement | null>(null);
 
@@ -67,8 +78,8 @@ function ArticlesList({ categorySlug }: { categorySlug?: string }) {
       {data.pages
         .flatMap((e) => e.docs)
         .map((item) => (
-          <Link href={`/post/${item.id}`} key={item.id}>
-            <ArticleCard data={item  as any} />
+          <Link href={`/post/${item.slug}`} key={item.id}>
+            <ArticleCard data={item} />
           </Link>
         ))}
 

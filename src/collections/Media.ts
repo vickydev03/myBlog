@@ -1,16 +1,25 @@
-import type { CollectionConfig } from 'payload'
+import { isAdmin } from "@/lib/access";
+import type { CollectionConfig } from "payload";
 
+// 👇 Define the correct type manually
+const uploadConfig = {
+  staticDir: "media",
+  staticURL: "/media",
+} as unknown as NonNullable<CollectionConfig["upload"]>;
+  
 export const Media: CollectionConfig = {
-  slug: 'media',
+  slug: "media",
   access: {
     read: () => true,
+    delete: ({ req }) => isAdmin(req.user),
   },
+  admin: {},
+  upload: uploadConfig,
   fields: [
     {
-      name: 'alt',
-      type: 'text',
+      name: "alt",
+      type: "text",
       required: true,
     },
   ],
-  upload: true,
-}
+};

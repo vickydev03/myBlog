@@ -6,11 +6,15 @@ export const TagsRouter = createTRPCRouter({
     const data = await ctx.payload.find({
       collection: "tags",
       depth: 1,
-      limit: 500,
+      limit: 5,
+      sort: "-createdAt",
+      where: {
+        isDisplay: {
+          equals: true,
+        },
+      },
     });
 
-    const randomData = data.docs.sort(() => 0.5 - Math.random()).slice(0,5);
-
-    return randomData;
+    return data.docs;
   }),
 });

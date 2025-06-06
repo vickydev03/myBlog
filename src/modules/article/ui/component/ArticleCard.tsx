@@ -1,15 +1,27 @@
 "use client";
 import { cn } from "@/lib/utils";
-import { Article, Media, User } from "@/payload-types";
+import {  Media, Tag, User } from "@/payload-types";
 import Image from "next/image";
 import { formatDistanceToNow } from "date-fns";
 import { motion } from "motion/react";
 import React, { useEffect, useState } from "react";
 interface Props {
-  data: Article & { author: User & { image: Media } } & { poster: Media };
+  data: {
+    id:string,
+    slug:string
+    author:User & {image:Media} 
+    description:string
+    poster:Media
+    title:string
+    tags:Tag[]
+    createdAt:Date
+  } ;
 }
 
+
 function ArticleCard({ data }: Props) {
+  console.log(data,"select");
+  
   const [screenSize, setScreenSize] = useState({ width: 0, height: 0 });
 
   useEffect(() => {

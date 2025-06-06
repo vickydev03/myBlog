@@ -14,7 +14,7 @@ interface DataProps {
   poster?: string | Media | null;
 }
 
-function ArticleSidebar() {
+function ArticleSidebarContent() {
   const trpc = useTRPC();
   const [filters, setFilters] = useArticleFilters();
   const { data } = useSuspenseQuery(trpc.articles.trending.queryOptions());
@@ -53,7 +53,7 @@ function ArticleSidebar() {
   };
   
   return (
-    <motion.section
+    <motion.aside
       initial={{ x: "100%" }}
       animate={{ x: 0 }}
       className="l h-full"
@@ -156,65 +156,9 @@ function ArticleSidebar() {
           </section>
         </div>
       </div>
-    </motion.section>
+    </motion.aside>
   );
 }
 
-export default ArticleSidebar;
+export default ArticleSidebarContent;
 
-export const ArticleSidebarSkeleton = () => {
-  return (
-    <div className="w-full relative h-full px-3 py-5 animate-pulse">
-      <div className="sidebar flex flex-col gap-10">
-        {/* Trending Posts Skeleton */}
-        <div className="flex flex-col gap-4">
-          <div className="h-6 w-40 bg-gray-200 rounded" />
-          <div className="flex flex-col gap-4">
-            {Array.from({ length: 5 }).map((_, i) => (
-              <div key={i} className="flex items-center gap-4">
-                <div className="w-16 h-16 bg-gray-300 rounded-md shrink-0" />
-                <div className="flex flex-col gap-2 w-full">
-                  <div className="h-4 bg-gray-200 rounded w-3/4" />
-                  <div className="h-3 bg-gray-100 rounded w-1/2" />
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Tags Skeleton with 3+2 layout */}
-        <div className="flex flex-col gap-4">
-          <div className="h-5 w-24 bg-gray-200 rounded" />
-          <div className="flex flex-col gap-3">
-            <div className="flex gap-3">
-              {Array.from({ length: 3 }).map((_, i) => (
-                <div
-                  key={`line1-${i}`}
-                  className="bg-gray-200 px-4 py-2 rounded-full w-20 h-6"
-                />
-              ))}
-            </div>
-            <div className="flex gap-3">
-              {Array.from({ length: 2 }).map((_, i) => (
-                <div
-                  key={`line2-${i}`}
-                  className="bg-gray-200 px-4 py-2 rounded-full w-20 h-6"
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Social Media Skeleton */}
-        <div className="flex flex-col gap-4">
-          <div className="h-6 w-48 bg-gray-200 rounded" />
-          <div className="flex items-center gap-6">
-            {Array.from({ length: 3 }).map((_, i) => (
-              <div key={i} className="w-6 h-6 bg-gray-300 rounded-full" />
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};

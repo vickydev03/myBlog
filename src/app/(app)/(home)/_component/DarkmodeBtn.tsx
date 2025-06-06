@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import "./css/darkMode.css";
 import { useTheme } from "next-themes";
 import { motion } from "motion/react";
 
 function DarkmodeBtn() {
-  const { theme, setTheme,resolvedTheme } = useTheme();
+  const {  setTheme,resolvedTheme } = useTheme();
   console.log(resolvedTheme,"themse");
   const isDark = resolvedTheme === "dark";
   return (

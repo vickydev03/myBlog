@@ -10,6 +10,7 @@ import Image from "next/image";
 import { format } from "date-fns";
 import { Media } from "@/payload-types";
 import { motion } from "motion/react";
+import { notFound } from "next/navigation";
 // import {Richt}
 const monts = Inter({
   weight: ["800"],
@@ -33,11 +34,12 @@ const monts = Inter({
 //   content:SerializedEditorState
 //   // Article & { author: User & { image: Media } } & { poster: Media }
 // }
-function ArticleViewOne({ id }: { id: string }) {
+function ArticleViewOne({ slug }: { slug: string }) {
   const trpc = useTRPC();
+
   const { data } = useSuspenseQuery(
     trpc.articles.getOne.queryOptions({
-      id,
+      slug,
     })
   );
   const { data: trendData } = useSuspenseQuery(
@@ -53,12 +55,19 @@ function ArticleViewOne({ id }: { id: string }) {
       tags: Array.isArray(data.tags)
         ? data.tags.map((tag) => (typeof tag === "string" ? tag : tag.name))
         : [],
+        currentPostSlug:slug
     })
   );
 
   // let x:DataProps=data
 
   const formattedDate = format(data.createdAt, "dd MMM yyyy");
+
+  if (!data) {
+    notFound();
+    // return <p>ajay</p>
+  }
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -81,6 +90,7 @@ function ArticleViewOne({ id }: { id: string }) {
           <div className="flex items-center gap-2">
             <div className="relative aspect-square">
               <Image
+              loading="lazy"
                 src={
                   typeof data.author === "object" &&
                   data.author?.image &&
@@ -132,6 +142,7 @@ function ArticleViewOne({ id }: { id: string }) {
                 .map((doc) => ({
                   id: doc.id,
                   title: doc.title,
+                  slug:doc.slug,
                   poster: doc.poster as Media,
                 }))}
             />
@@ -145,6 +156,7 @@ function ArticleViewOne({ id }: { id: string }) {
                 .filter((doc) => doc.poster && typeof doc.poster === "object")
                 .map((doc) => ({
                   id: doc.id,
+                  slug:doc.slug,
                   title: doc.title,
                   poster: doc.poster as Media,
                 }))}

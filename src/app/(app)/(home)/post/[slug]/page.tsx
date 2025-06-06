@@ -3,14 +3,16 @@ import { getQueryClient, trpc } from "@/trpc/server";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 import React, { Suspense } from "react";
 import Footer from "../../_component/Footer";
+export const dynamic='force-dynamic'
 
-async function page({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = await params;
+
+async function page({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   const queryClient = getQueryClient();
 
   void queryClient.prefetchQuery(
     trpc.articles.getOne.queryOptions({
-      id,
+      slug,
     })
   );
   void queryClient.prefetchQuery(
@@ -20,7 +22,7 @@ async function page({ params }: { params: Promise<{ id: string }> }) {
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
       <Suspense fallback={<ArticleSkeleton/>}>
-        <ArticleViewOne id={id} />
+        <ArticleViewOne slug={slug} />
         <Footer/>
       </Suspense>
     </HydrationBoundary>

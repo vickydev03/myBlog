@@ -26,7 +26,7 @@ export default function RootLayout({
       <head>
         {/* <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> */}
       </head>
-      <body className={`${lora.variable} antialiased `}>
+      <body className={`${lora.variable} font-serif antialiased `}>
         <NuqsAdapter>
           <TRPCReactProvider>
             <PageTransition>{children}</PageTransition>

@@ -26,5 +26,11 @@ export const Tags: CollectionConfig = {
       relationTo: "articles",
       hasMany: true,
     },
+    {
+      name: "isDisplay",
+      type: "checkbox",
+      defaultValue: false,
+      label: "display",
+    },
   ],
 };

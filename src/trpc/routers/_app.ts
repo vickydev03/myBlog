@@ -2,10 +2,12 @@ import { ArticleRouter } from "@/modules/article/server/procedures";
 import {  createTRPCRouter } from "../init";
 import { TagsRouter } from "@/modules/tags/server/procedures";
 import { categoriesRouter } from "@/modules/categories/server/procedures";
+import { authRouter } from "@/modules/auth/Server/procedures";
 export const appRouter = createTRPCRouter({
   categories: categoriesRouter,
   tags: TagsRouter,
-  articles:ArticleRouter
+  articles:ArticleRouter,
+  auth:authRouter
 });
 
 export type AppRouter = typeof appRouter;

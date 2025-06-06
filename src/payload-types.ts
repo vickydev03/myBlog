@@ -166,6 +166,14 @@ export interface Category {
   id: string;
   name: string;
   slug: string;
+  meta?: {
+    title?: string | null;
+    description?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (string | null) | Media;
+  };
   updatedAt: string;
   createdAt: string;
 }
@@ -177,6 +185,15 @@ export interface Tag {
   id: string;
   name: string;
   article?: (string | Article)[] | null;
+  isDisplay?: boolean | null;
+  meta?: {
+    title?: string | null;
+    description?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (string | null) | Media;
+  };
   updatedAt: string;
   createdAt: string;
 }
@@ -187,17 +204,20 @@ export interface Tag {
 export interface Article {
   id: string;
   title: string;
+  /**
+   * URL-friendly version of the title (e.g., "my-article-title")
+   */
   slug: string;
   description: string;
   poster?: (string | null) | Media;
-  author?: (string | null) | User;
+  author: string | User;
   category?: (string | null) | Category;
   /**
    * If checked, this article will be private and not show to anyone
    */
   isPrivate?: boolean | null;
   /**
-   * write the article for your blog
+   * Write the article content here
    */
   content?: {
     root: {
@@ -227,6 +247,7 @@ export interface Article {
   };
   updatedAt: string;
   createdAt: string;
+  _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -340,6 +361,13 @@ export interface MediaSelect<T extends boolean = true> {
 export interface CategoriesSelect<T extends boolean = true> {
   name?: T;
   slug?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        image?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
 }
@@ -350,6 +378,14 @@ export interface CategoriesSelect<T extends boolean = true> {
 export interface TagsSelect<T extends boolean = true> {
   name?: T;
   article?: T;
+  isDisplay?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        image?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
 }
@@ -378,6 +414,7 @@ export interface ArticlesSelect<T extends boolean = true> {
       };
   updatedAt?: T;
   createdAt?: T;
+  _status?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

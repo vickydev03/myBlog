@@ -19,6 +19,7 @@ interface Data {
   poster: Media;
   title: string;
   id: string;
+  slug:string
 }
 interface Props {
   header: string;
@@ -61,10 +62,11 @@ function SwiperComponent({ header, data }: Props) {
             key={i}
             className="pt-0 pb-5 md:pb-6 md:pt-5 bg-red-2000"
           >
-            <Link href={`/post/${e.id}`}>
+            <Link href={`/post/${e.slug}`}>
               <div className="flex flex-col h-full  w-full">
                 <div className="w-full h-[250px]  relative">
                   <Image
+                  loading="lazy"
                     src={e.poster.url || ""}
                     alt={e.title}
                     width={100}

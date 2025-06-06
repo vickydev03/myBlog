@@ -18,6 +18,32 @@ const dirname = path.dirname(filename);
 
 export default buildConfig({
   admin: {
+    livePreview: {
+      collections: ["articles"],
+      url: ({ data }) => {
+        return `http://localhost:3000/post/${data.id}`; // Adjust based on your frontend route
+      },
+      breakpoints: [
+        {
+          name: "desktop",
+          label: "desktop",
+          width: 1440,
+          height: 1080,
+        },
+        {
+          name: "mobile",
+          label: "mobile",
+          width: 375,
+          height: 667,
+        },
+        {
+          name: "ipad",
+          label: "iPad",
+          width: 768,
+          height: 1024,
+        },
+      ],
+    },
     user: Users.slug,
     importMap: {
       baseDir: path.resolve(dirname),
@@ -30,18 +56,41 @@ export default buildConfig({
   typescript: {
     outputFile: path.resolve(dirname, "payload-types.ts"),
   },
+
   db: mongooseAdapter({
     url: process.env.DATABASE_URI || "",
   }),
   sharp,
+
   plugins: [
     payloadCloudPlugin(),
     seoPlugin({
-      collections: ["articles"],
+      collections: ["articles", "categories"],
       uploadsCollection: "media",
       generateTitle: ({ doc }) => doc.title,
       generateDescription: ({ doc }) => doc.description,
+      generateURL: ({ doc, collectionSlug }) => {
+        const baseUrl = "https://yourdomain.com";
+
+        if (collectionSlug === "articles") {
+          return `${baseUrl}/post/${doc.slug}`;
+        }
+
+        if (collectionSlug === "categories") {
+          return `${baseUrl}/category/${doc.slug}`;
+        }
+
+        return baseUrl;
+      },
       tabbedUI: true,
     }),
   ],
+
+  // onInit: async (payload) => {
+  //   await payload.update({
+  //     collection: "articles",
+  //     where: {},
+  //     data: { _status: "published" },
+  //   });
+  // },
 });

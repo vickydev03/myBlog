@@ -1,4 +1,4 @@
-import { Category } from "@/payload-types";
+import { Category, User, Media, Tag } from "@/payload-types";
 import { baseProcedure, createTRPCRouter } from "@/trpc/init";
 import { z } from "zod";
 import type { Where } from "payload";
@@ -9,37 +9,50 @@ export const ArticleRouter = createTRPCRouter({
   getOne: baseProcedure
     .input(
       z.object({
-        id: z.string(),
+        slug: z.string().nullable(),
       })
     )
     .query(async ({ ctx, input }) => {
+      const where: Where = {
+        and: [
+          {
+            slug: {
+              equals: input.slug,
+            },
+          },
+          {
+            isPrivate: {
+              not_equals: true,
+            },
+          },
+        ],
+      };
+
       const data = await ctx.payload.find({
         collection: "articles",
-        where: {
-          and: [
-            {
-              id: {
-                equals: input.id,
-              },
-            },
-            {
-              isPrivate: {
-                not_equals: true,
-              },
-            },
-          ],
-        },
+        where,
         limit: 1,
+        select: {
+          content: true,
+          title: true,
+          author: true,
+          category: true,
+          slug: true,
+          createdAt: true,
+          "read-time": true,
+          tags: true,
+          description: true,
+        },
       });
 
       if (!data.docs[0]) {
         throw new TRPCError({
           code: "NOT_FOUND",
-          message: "Article not found or is private",
+          message: "This post is not found",
         });
       }
 
-      return data.docs[0];
+      return data.docs[0] ?? null;
     }),
   getMany: baseProcedure
     .input(
@@ -55,6 +68,18 @@ export const ArticleRouter = createTRPCRouter({
       // new Promise((resolve) => setTimeout(resolve, 3000)); // Simulating a delay for testing
       const where: Where = {
         isPrivate: { not_equals: true },
+        or: [
+          {
+            _status: {
+              equals: "published",
+            },
+          },
+          {
+            _status: {
+              exists: false,
+            },
+          },
+        ],
       };
 
       if (input.categorySlug) {
@@ -94,21 +119,55 @@ export const ArticleRouter = createTRPCRouter({
         const data = await ctx.payload.find({
           collection: "articles",
           sort: "-createdAt",
-
-          depth: 2,
+          depth: 3,
           where,
+          select: {
+            author: true,
+            description: true,
+            slug: true,
+            poster: true,
+            title: true,
+            createdAt: true,
+            tags: true,
+          },
           page: input.cursor,
           limit: input.limit,
         });
 
-        console.log(data, "chirusingh");
+        // Transform the data to ensure correct types
+        const transformedDocs = data.docs
+          .filter(
+            (doc) =>
+              typeof doc.author === "object" &&
+              doc.author &&
+              "image" in doc.author &&
+              typeof doc.poster === "object" &&
+              doc.poster
+          )
+          .map((doc) => ({
+            ...doc,
+            createdAt: new Date(doc.createdAt),
+            author: doc.author as User & { image: Media },
+            poster: doc.poster as Media,
+            tags: Array.isArray(doc.tags)
+              ? doc.tags.filter(
+                  (tag): tag is Tag => typeof tag === "object" && tag !== null
+                )
+              : [],
+          }));
 
-        return data;
+        return {
+          ...data,
+          docs: transformedDocs,
+        };
       } catch (error) {
         console.error("Error fetching articles:", error);
         throw new TRPCError({
           code: "INTERNAL_SERVER_ERROR",
-          message: "Failed to fetch articles",
+          message:
+            error instanceof Error
+              ? error.message
+              : "An unexpected error occurred",
         });
       }
     }),
@@ -128,6 +187,7 @@ export const ArticleRouter = createTRPCRouter({
         select: {
           poster: true,
           title: true,
+          slug: true,
         },
       });
 
@@ -146,34 +206,18 @@ export const ArticleRouter = createTRPCRouter({
       z.object({
         categorySlug: z.string().nullable().optional(),
         tags: z.array(z.string()).optional(),
+        currentPostSlug: z.string().nullable(),
       })
     )
     .query(async ({ ctx, input }) => {
-      // const conditions = [];
-
-      // if (input.categorySlug) {
-      //   conditions.push({
-      //     "category.slug": {
-      //       equals: input.categorySlug,
-      //     },
-      //   });
-      // }
-
-      // if (input.tags && input.tags.length > 0) {
-      //   conditions.push({
-      //     "tags.slug": {
-      //       in: input.tags,
-      //     },
-      //   });
-      // }
-
-      // if (conditions.length === 0) {
-      //   return [];
-      // }
-
       const data = await ctx.payload.find({
         collection: "articles",
+
         where: {
+          slug: {
+            not_equals: input.currentPostSlug,
+          },
+
           or: [
             {
               "category.slug": {
