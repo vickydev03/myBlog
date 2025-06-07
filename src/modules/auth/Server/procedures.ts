@@ -131,11 +131,8 @@ export const authRouter = createTRPCRouter({
         value: loginData.token,
         httpOnly: true,
         path: "/",
-        ...(process.env.NODE_ENV !== "development" && {
-          sameSite: "none",
-          // domain: new URL(process.env.NEXT_PUBLIC_APP_URL!).hostname,
-          secure: true,
-        }),
+        sameSite:"none",
+        secure:true
       });
 
       return loginData; // Return user data and token
