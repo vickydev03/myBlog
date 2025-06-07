@@ -1,10 +1,10 @@
-import { isAdmin } from '@/lib/access';
-import type { CollectionConfig } from 'payload';
+import { isAdmin } from "@/lib/access";
+import type { CollectionConfig } from "payload";
 
 export const Users: CollectionConfig = {
-  slug: 'users',
+  slug: "users",
   admin: {
-    useAsTitle: 'email',
+    useAsTitle: "email",
     hidden: ({ user }) => !isAdmin(user),
   },
   auth: {
@@ -14,10 +14,11 @@ export const Users: CollectionConfig = {
         secure: true,
       }),
     },
-    
-    maxLoginAttempts: 20, 
-    lockTime: 0,           
-  },access: {
+    tokenExpiration: 864000,
+    maxLoginAttempts: 20,
+    lockTime: 0,
+  },
+  access: {
     read: () => true,
     create: ({ req }) => isAdmin(req.user),
     delete: ({ req }) => isAdmin(req.user),

@@ -20,15 +20,16 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 
 import { toast } from "sonner";
+import Link from "next/link";
 
 function SignupForm() {
   const router = useRouter();
-  const queryClient=useQueryClient()
+  const queryClient = useQueryClient();
   const handleSuccess = useCallback(() => {
     queryClient.invalidateQueries();
     toast.success("You are sucessfully login");
     router.push("/");
-  }, [router,queryClient]);
+  }, [router, queryClient]);
 
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(true);
@@ -46,14 +47,14 @@ function SignupForm() {
   const register = useMutation(
     trpc.auth.register.mutationOptions({
       onError: (error) => {
-        console.log(error); 
+        console.log(error);
         toast.error(error.message);
       },
       onSuccess: handleSuccess,
     })
   );
   const onSubmit = (values: z.infer<typeof registerSchema>) => {
-    console.log("Form values:", values); 
+    console.log("Form values:", values);
     register.mutate(values);
   };
 
@@ -202,26 +203,26 @@ function SignupForm() {
               name="agree-terms"
               type="checkbox"
               required
-              className="h-4 w-4 text-emerald-600 focus:ring-emerald-500 border-slate-300 rounded mt-1"
+              className="mt-1 h-4 w-4 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500"
             />
             <label
               htmlFor="agree-terms"
-              className="text-sm text-slate-600 leading-relaxed"
+              className="text-sm leading-relaxed text-slate-600"
             >
               I agree to the{" "}
-              <a
-                href="#"
-                className="font-semibold text-emerald-600 hover:text-emerald-700"
+              <Link
+                href="/terms"
+                className="font-semibold text-emerald-600 hover:text-emerald-700 underline"
               >
                 Terms of Service
-              </a>{" "}
+              </Link>{" "}
               and{" "}
-              <a
-                href="#"
-                className="font-semibold text-emerald-600 hover:text-emerald-700"
+              <Link
+                href="/privacy"
+                className="font-semibold text-emerald-600 hover:text-emerald-700 underline"
               >
                 Privacy Policy
-              </a>
+              </Link>
             </label>
           </div>
 

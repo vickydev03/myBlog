@@ -91,7 +91,7 @@ function ArticleViewOne({ slug }: { slug: string }) {
                   typeof data.author === "object" &&
                   data.author?.image &&
                   typeof data.author.image === "object"
-                    ? data.author.image.url || "/placeholder.png"
+                    ? data.author.image.url || "https://cdn-icons-png.flaticon.com/512/847/847969.png"
                     : "https://cdn-icons-png.flaticon.com/512/847/847969.png"
                 }
                 alt={
