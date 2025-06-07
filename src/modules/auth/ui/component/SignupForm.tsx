@@ -78,8 +78,8 @@ function SignupForm() {
                         <Input
                           {...field}
                           type="text"
-                          className="pl-12 h-14 border-slate-200 focus:border-emerald-500 focus:ring-emerald-500 rounded-xl text-base bg-slate-50/80 focus:bg-white transition-all duration-200"
                           placeholder="Ajay singh"
+                          className="pl-12 h-14 border-slate-200 focus:border-emerald-500 focus:ring-emerald-500 rounded-xl text-base bg-slate-50/80 focus:bg-white transition-all duration-200"
                         />
                       </div>
                     </FormControl>

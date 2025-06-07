@@ -34,6 +34,7 @@ export const ArticleRouter = createTRPCRouter({
         limit: 1,
         select: {
           content: true,
+          poster: true,
           title: true,
           author: true,
           category: true,
@@ -52,7 +53,8 @@ export const ArticleRouter = createTRPCRouter({
         });
       }
 
-      return data.docs[0] ?? null;
+      // return data.docs[0] ?? null;
+      return {...data.docs[0],poster:data.docs[0].poster as Media}
     }),
   getMany: baseProcedure
     .input(
