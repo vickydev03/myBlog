@@ -8,7 +8,7 @@ import { headers as getHeaders, cookies as getCookies } from "next/headers";
 // Define Input Schemas using zod for validation
 const registerSchema = z.object({
   email: z.string().email(),
-  password: z.string().min(8, "Password must be at least 6 characters"),
+  password: z.string().min(8, "Password must be at least 8 characters"),
   name: z.string().min(1, "name is required"),
 });
 
@@ -74,22 +74,19 @@ export const authRouter = createTRPCRouter({
         }
 
         // Set authentication cookie
-        console.log(loginData.token,"token-p");
-        
+
         const cookies = await getCookies();
-        if (loginData.token) {
-          cookies.set({
-            name: "payload-token",
-            value: loginData.token,
-            path: "/",
-            httpOnly: true,
-            ...(process.env.NODE_ENV !== "development" && {
-              sameSite: process.env.NODE_ENV === "production" ? "none" : "lax" as const,
-              domain: process.env.NEXT_PUBLIC_APP_URL,
-              secure: true,
-            }),
-          });
-        }
+        cookies.set({
+          name: "payload-token",
+          value: loginData.token,
+          httpOnly: true,
+          path: "/",
+          ...(process.env.NODE_ENV !== "development" && {
+            sameSite: "none",
+            domain: process.env.NEXT_PUBLIC_APP_URL,
+            secure: true,
+          }),
+        });
 
         return loginData; // Return user data along with token
       } catch (error) {
@@ -139,7 +136,9 @@ export const authRouter = createTRPCRouter({
       throw new TRPCError({
         code: "INTERNAL_SERVER_ERROR",
         message:
-          error instanceof Error ? error.message : "an unexpected error ocured",
+          error instanceof Error
+            ? error.message
+            : "an unexpected error occurred",
       });
     }
   }),
