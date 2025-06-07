@@ -46,13 +46,14 @@ function SignupForm() {
   const register = useMutation(
     trpc.auth.register.mutationOptions({
       onError: (error) => {
+        console.log(error); 
         toast.error(error.message);
       },
       onSuccess: handleSuccess,
     })
   );
   const onSubmit = (values: z.infer<typeof registerSchema>) => {
-    console.log("Form values:", values); // check email value here
+    console.log("Form values:", values); 
     register.mutate(values);
   };
 

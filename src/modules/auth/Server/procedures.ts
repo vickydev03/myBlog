@@ -91,9 +91,17 @@ export const authRouter = createTRPCRouter({
         return loginData; // Return user data along with token
       } catch (error) {
         console.log("Registration Error:", error);
+
+        if (error instanceof TRPCError) {
+          throw error;
+        }
+
         throw new TRPCError({
           code: "INTERNAL_SERVER_ERROR",
-          message: "An error occurred while registering the user",
+          message:
+            error instanceof Error
+              ? error.message
+              : "An unknown error occurred",
         });
       }
     }),
@@ -133,12 +141,14 @@ export const authRouter = createTRPCRouter({
       return loginData; // Return user data and token
     } catch (error) {
       console.log("Login Error:", error);
+      if (error instanceof TRPCError) {
+        throw error;
+      }
+
       throw new TRPCError({
         code: "INTERNAL_SERVER_ERROR",
         message:
-          error instanceof Error
-            ? error.message
-            : "an unexpected error occurred",
+          error instanceof Error ? error.message : "An unknown error occurred",
       });
     }
   }),

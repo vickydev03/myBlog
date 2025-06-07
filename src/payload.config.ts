@@ -83,7 +83,7 @@ export default buildConfig({
       generateDescription: ({ doc }) => doc.description,
       generateURL: ({ doc, collectionSlug }) => {
         const baseUrl =
-          process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
+          process.env.NEXT_PUBLIC_APP_URL || "";
 
         if (collectionSlug === "articles") {
           return `${baseUrl}/post/${doc.slug}`;
