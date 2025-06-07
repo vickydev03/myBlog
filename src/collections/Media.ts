@@ -5,15 +5,23 @@ import type { CollectionConfig } from "payload";
 const uploadConfig = {
   staticDir: "media",
   staticURL: "/media",
+  maxFileSize: 1024 * 1024 * 2,
+  imageSizes: [
+    {
+      name: "og",
+      width: 1200,
+      height: 630,
+      crop: "center",
+    },
+  ],
 } as unknown as NonNullable<CollectionConfig["upload"]>;
-  
+
 export const Media: CollectionConfig = {
   slug: "media",
   access: {
     read: () => true,
     delete: ({ req }) => isAdmin(req.user),
   },
-  admin: {},
   upload: uploadConfig,
   fields: [
     {

@@ -1,6 +1,6 @@
 // lib/fetch-article.ts
 import { caller } from "@/trpc/server";
-
-export const fetchArticleBySlug = async (slug: string) => {
+import { cache } from "react";
+export const fetchArticleBySlug = cache(async (slug: string) => {
   return await caller.articles.getOne({ slug });
-};
+});

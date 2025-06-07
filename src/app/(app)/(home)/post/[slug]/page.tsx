@@ -1,7 +1,7 @@
 import ArticleViewOne, {
   ArticleSkeleton,
 } from "@/modules/article/ui/component/ArticleViewOne";
-import {  getQueryClient, trpc } from "@/trpc/server";
+import { getQueryClient, trpc } from "@/trpc/server";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 import React, { Suspense } from "react";
 import Footer from "../../_component/Footer";
@@ -18,7 +18,7 @@ export async function generateMetadata({
 
   try {
     const data = await fetchArticleBySlug(slug);
-
+    const baseUrl = process.env.NEXT_PUBLIC_APP_URL;
     return {
       title: data.title,
       description: data.description,
@@ -28,7 +28,10 @@ export async function generateMetadata({
         images: data.poster?.url
           ? [
               {
-                url: data.poster.url,
+                url: `${baseUrl}${data.poster.url}`,
+                width: 1200,
+                height: 600,
+                alt: data.title,
               },
             ]
           : [],
@@ -36,7 +39,7 @@ export async function generateMetadata({
     };
   } catch (error) {
     console.log(error);
-    
+
     return {
       title: "Article Not Found",
       description: "The requested post could not be found.",
