@@ -85,7 +85,7 @@ function ArticleCard({ data }: Props) {
             {data.title}
           </h2>
         </div>
-        <div className="desciption">{description}</div>
+        <div className="description">{description}</div>
 
         <div className="last-bar flex gap-18">
           <h4 className="text-sm">{timeAgo}</h4>

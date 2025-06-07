@@ -3,7 +3,7 @@ import { mongooseAdapter } from "@payloadcms/db-mongodb";
 import { payloadCloudPlugin } from "@payloadcms/payload-cloud";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import path from "path";
-
+import { s3Storage } from "@payloadcms/storage-s3";
 import { buildConfig } from "payload";
 import { fileURLToPath } from "url";
 import sharp from "sharp";
@@ -21,7 +21,7 @@ export default buildConfig({
     livePreview: {
       collections: ["articles"],
       url: ({ data }) => {
-        return `http://localhost:3000/post/${data.slug}`; // Adjust based on your frontend route
+        return `${process.env.NEXT_PUBLIC_APP_URL}/post/${data.slug}`; // Adjust based on your frontend route
       },
       breakpoints: [
         {
@@ -63,6 +63,18 @@ export default buildConfig({
   sharp,
 
   plugins: [
+    s3Storage({
+      collections: { media: true },
+      bucket: process.env.S3_BUCKET || "",
+      config: {
+        credentials: {
+          accessKeyId: process.env.S3_ACCESS_KEY_ID || "",
+          secretAccessKey: process.env.S3_SECREAT || "",
+        },
+        region: "auto",
+        endpoint:process.env.S3_ENDPOINT||''
+      },
+    }),
     payloadCloudPlugin(),
     seoPlugin({
       collections: ["articles", "categories"],
@@ -70,7 +82,8 @@ export default buildConfig({
       generateTitle: ({ doc }) => doc.title,
       generateDescription: ({ doc }) => doc.description,
       generateURL: ({ doc, collectionSlug }) => {
-        const baseUrl = "https://yourdomain.com";
+        const baseUrl =
+          process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
 
         if (collectionSlug === "articles") {
           return `${baseUrl}/post/${doc.slug}`;
