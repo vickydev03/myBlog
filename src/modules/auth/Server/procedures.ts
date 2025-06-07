@@ -83,7 +83,7 @@ export const authRouter = createTRPCRouter({
           path: "/",
           ...(process.env.NODE_ENV !== "development" && {
             sameSite: "none",
-            domain: new URL(process.env.NEXT_PUBLIC_APP_URL!).hostname,
+            // domain: new URL(process.env.NEXT_PUBLIC_APP_URL!).hostname,
             secure: true,
           }),
         });
@@ -133,7 +133,7 @@ export const authRouter = createTRPCRouter({
         path: "/",
         ...(process.env.NODE_ENV !== "development" && {
           sameSite: "none",
-          domain: new URL(process.env.NEXT_PUBLIC_APP_URL!).hostname,
+          // domain: new URL(process.env.NEXT_PUBLIC_APP_URL!).hostname,
           secure: true,
         }),
       });
@@ -152,6 +152,7 @@ export const authRouter = createTRPCRouter({
       });
     }
   }),
+  
 
   // Logout user
   logout: baseProcedure.mutation(async () => {

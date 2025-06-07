@@ -19,18 +19,19 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
+import { useTRPC } from "@/trpc/client";
 
 function LoginForm() {
   const router = useRouter();
 
   const [showPassword, setShowPassword] = useState(false);
   const queryClient = useQueryClient();
-
+  const trpc = useTRPC();
   const handleSuccess = useCallback(() => {
     queryClient.invalidateQueries();
     toast.success("You are sucessfully login");
     router.push("/");
-  }, [router,queryClient]);
+  }, [router, queryClient]);
 
   const login = useMutation({
     mutationFn: async (values: z.infer<typeof loginSchema>) => {
@@ -44,12 +45,16 @@ function LoginForm() {
 
       if (!res.ok) {
         const errors = await res.json();
+
+        console.error(errors,"e5");
+        
         throw new Error(errors.message || "Login failed");
       }
 
       return res.json();
     },
     onError: (error) => {
+      console.log(error, "ajaysingh");
       toast.error(error.message);
     },
     onSuccess: handleSuccess,
@@ -120,8 +125,10 @@ function LoginForm() {
                         />
                         <button
                           type="button"
-                          aria-label={showPassword ? "Hide password" : "Show password"}
-// +                          ta
+                          aria-label={
+                            showPassword ? "Hide password" : "Show password"
+                          }
+                          // +                          ta
                           className="absolute right-4 top-4 text-slate-400 hover:text-slate-600 transition-colors"
                           onClick={() => setShowPassword((e) => !e)}
                         >
@@ -140,7 +147,7 @@ function LoginForm() {
               />
             </div>
           </div>
-                {/* todo */}
+          {/* todo */}
           {/* <div className="flex items-center justify-between pt-2  ">
             <div className="text-sm ml-auto ">
               <Link
