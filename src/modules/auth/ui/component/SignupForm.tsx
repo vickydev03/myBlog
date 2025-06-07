@@ -197,7 +197,7 @@ function SignupForm() {
             </div>
           </div>
 
-          <div className="flex items-start space-x-3 pt-2">
+          {/* <div className="flex items-start space-x-3 pt-2">
             <input
               id="agree-terms"
               name="agree-terms"
@@ -224,7 +224,7 @@ function SignupForm() {
                 Privacy Policy
               </Link>
             </label>
-          </div>
+          </div> */}
 
           <Button
             type="submit"
