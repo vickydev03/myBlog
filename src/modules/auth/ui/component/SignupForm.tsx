@@ -10,20 +10,26 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { registerSchema } from "@/lib/schema";
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@/components/ui/input";
 import { EyeOff, Eye, Mail, User, Lock } from "lucide-react";
 import { z } from "zod";
 import { useTRPC } from "@/trpc/client";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 
 import { toast } from "sonner";
 
 function SignupForm() {
   const router = useRouter();
+  const queryClient=useQueryClient()
+  const handleSuccess = useCallback(() => {
+    queryClient.invalidateQueries();
+    toast.success("You are sucessfully login");
+    router.push("/");
+  }, [router,queryClient]);
 
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(true);
@@ -43,9 +49,7 @@ function SignupForm() {
       onError: (error) => {
         toast.error(error.message);
       },
-      onSuccess: () => {
-        router.push("/");
-      },
+      onSuccess: handleSuccess,
     })
   );
   const onSubmit = (values: z.infer<typeof registerSchema>) => {
