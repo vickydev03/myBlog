@@ -20,7 +20,6 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 
 import { toast } from "sonner";
-import Link from "next/link";
 
 function SignupForm() {
   const router = useRouter();
