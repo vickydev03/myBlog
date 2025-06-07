@@ -19,14 +19,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
-import { useTRPC } from "@/trpc/client";
 
 function LoginForm() {
   const router = useRouter();
 
   const [showPassword, setShowPassword] = useState(false);
   const queryClient = useQueryClient();
-  const trpc = useTRPC();
   const handleSuccess = useCallback(() => {
     queryClient.invalidateQueries();
     toast.success("You are sucessfully login");
