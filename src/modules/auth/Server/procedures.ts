@@ -76,17 +76,27 @@ export const authRouter = createTRPCRouter({
         // Set authentication cookie
 
         const cookies = await getCookies();
+        // cookies.set({
+        //   name: "payload-token",
+        //   value: loginData.token,
+        //   httpOnly: true,
+        //   path: "/",
+        //   ...(process.env.NODE_ENV !== "development" && {
+        //     sameSite: "none",
+        //     // domain: new URL(process.env.NEXT_PUBLIC_APP_URL!).hostname,
+        //     secure: true,
+        //   }),
+        // });
+
         cookies.set({
           name: "payload-token",
           value: loginData.token,
           httpOnly: true,
           path: "/",
-          ...(process.env.NODE_ENV !== "development" && {
-            sameSite: "none",
-            // domain: new URL(process.env.NEXT_PUBLIC_APP_URL!).hostname,
-            secure: true,
-          }),
+          sameSite:"none",
+          secure:true
         });
+  
 
         return loginData; // Return user data along with token
       } catch (error) {
