@@ -8,6 +8,13 @@ export const Users: CollectionConfig = {
     hidden: ({ user }) => !isAdmin(user),
   },
   auth: {
+    cookies: {
+      ...(process.env.NODE_ENV !== "development" && {
+        sameSite: "None",
+        domain: process.env.NEXT_PUBLIC_APP_URL,
+        secure: true,
+      }),
+    },
     maxLoginAttempts: 20, 
     lockTime: 0,           
   },access: {

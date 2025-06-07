@@ -145,7 +145,6 @@ function Navbar() {
             <LoginBtn />
           )}
         </div>
-        <div className={cn(hideOther && "hidden")}></div>
       </div>
     </motion.div>
   );
@@ -251,7 +250,19 @@ export const Profile = ({
         </DropdownMenuLabel>
 
         <DropdownMenuSeparator className="bg-gray-200" />
-
+        {admin && (
+          <DropdownMenuItem className="px-2 py-1 t hover:bg-gray-100 rounded-md transition-colors">
+            <Button
+              variant="link"
+              className="text-sm font-medium text-gray-700 w-full text-left p-0 h-auto border-none"
+              asChild
+            >
+              <Link href={"/admin"} prefetch>
+                Dashboard
+              </Link>
+            </Button>
+          </DropdownMenuItem>
+        )}
         <DropdownMenuItem className="px-2 py-1 hover:bg-gray-100 rounded-md transition-colors">
           <Button
             variant="link"
@@ -261,17 +272,6 @@ export const Profile = ({
             Logout
           </Button>
         </DropdownMenuItem>
-        {admin && (
-          <DropdownMenuItem className="px-2 py-1 t hover:bg-gray-100 rounded-md transition-colors">
-            <Button
-              variant="link"
-              className="text-sm font-medium text-gray-700 w-full text-left p-0 h-auto border-none"
-              asChild
-            >
-              <Link href={"/admin"} prefetch>Dashboard</Link>
-            </Button>
-          </DropdownMenuItem>
-        )}
       </DropdownMenuContent>
     </DropdownMenu>
   );
