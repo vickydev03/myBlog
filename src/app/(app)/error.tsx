@@ -1,6 +1,6 @@
 "use client";
 import NotFound from "./not-found";
-import ErrorPage from "@/components/ErrorPage";
+// import ErrorPage from "@/components/ErrorPage";
 import { notFound } from "next/navigation";
 
 export default function GlobalError({
