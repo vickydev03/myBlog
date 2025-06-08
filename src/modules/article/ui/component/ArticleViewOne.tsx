@@ -62,7 +62,7 @@ function ArticleViewOne({ slug }: { slug: string }) {
   // let x:DataProps=data
 
   const formattedDate = format(data.createdAt, "dd MMM yyyy");
-  
+
   // if(!data){
   //   <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 flex items-center justify-center relative overflow-hidden">
   //   {/* Animated background elements */}
@@ -161,8 +161,9 @@ function ArticleViewOne({ slug }: { slug: string }) {
         <div className="w-full flex items-center gap-4 sm:gap-6 md:gap-7 lg:gap-8 xl:gap-9  gap-y-2 bg-red-2000  t b p-2">
           <div className="flex items-center gap-2">
             <div className="relative aspect-square">
-              <Avatar className="w-8 h-8">
+              <Avatar className="w-8 h-8 ">
                 <AvatarImage
+                  className=" object-cover aspect-square"
                   src={
                     typeof data.author === "object" &&
                     data.author?.image &&
@@ -185,7 +186,7 @@ function ArticleViewOne({ slug }: { slug: string }) {
               </Avatar>
             </div>
             <h5 className={cn("font-medium text-[#2f2e2e] text-sm md:text-md")}>
-              <span className="font-semibold text-base ">
+              <span className="font-semibold text-[14px]  md:text-base ">
                 {typeof data.author === "object"
                   ? data?.author?.name
                   : data.author || "Anonymous"}
@@ -204,7 +205,7 @@ function ArticleViewOne({ slug }: { slug: string }) {
         </div>
 
         {/* content */}
-        <div className="mt-5 prose prose-lg prose-headings:scroll-mt-20 prose-headings:text-gray-900 prose-p:text-gray-700 prose-img:rounded-lg prose-img:mx-auto">
+        <div className=" relative mt-5 prose prose-lg prose-headings:scroll-mt-20 prose-headings:text-gray-900 prose-p:text-gray-700 prose-img:rounded-lg prose-img:mx-auto prose-img:w-full prose-img:h-auto prose-img:max-h-[400px] sm:prose-img:max-h-[500px] md:prose-img:max-h-[600px] prose-img:object-contain prose-img:my-4">
           {data.content && <RichText data={data.content} />}
         </div>
       </div>

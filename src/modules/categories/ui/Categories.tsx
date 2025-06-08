@@ -4,16 +4,23 @@ import { Inter } from "next/font/google";
 const intel = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
-  display:"swap"
-
+  display: "swap",
 });
+// import CategoriesSideBar from "./CategoriesSideBar";
+
+const CategoriesSideBar = dynamic(() => import("./CategoriesSideBar"), {
+  ssr: false, 
+});
+
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { ListFilterIcon } from "lucide-react";
-import CategoriesSideBar from "./CategoriesSideBar";
 import { useParams } from "next/navigation";
 import { Category } from "@/payload-types";
 import Link from "next/link";
+import dynamic from "next/dynamic";
+
+
 function Categories({ data }: { data: Category[] }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const measureRef = useRef<HTMLDivElement>(null);
@@ -22,7 +29,7 @@ function Categories({ data }: { data: Category[] }) {
   const [visibleCount, setVisibleCount] = useState(data.length);
   const [isAnyHovered, setIsAnyHovered] = useState(false);
   const [isSidebarOpen, setIsSideBarOpen] = useState(false);
-  console.log(isSidebarOpen, "sidebar ");
+  // console.log(isSidebarOpen, "sidebar ");
 
   const params = useParams();
   const categoryParams = params.category as string | undefined;
@@ -33,7 +40,7 @@ function Categories({ data }: { data: Category[] }) {
   const IsActiveCategoryHidden =
     visibleCount <= activeCategoryIndex && activeCategoryIndex !== -1;
 
-  console.log("here we go", activeCategoryIndex);
+  // console.log("here we go", activeCategoryIndex);
 
   useEffect(() => {
     const calculateVisible = () => {

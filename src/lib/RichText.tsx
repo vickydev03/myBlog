@@ -28,6 +28,8 @@ export function RichText({ data, className }: RichTextProps) {
   useEffect(() => {
     const images = containerRef.current?.querySelectorAll("img");
     images?.forEach((img) => {
+      
+      
       img.setAttribute("loading", "lazy");
     });
   }, [data]);

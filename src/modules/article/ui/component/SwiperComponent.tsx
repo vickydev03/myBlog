@@ -71,7 +71,7 @@ function SwiperComponent({ header, data }: Props) {
                     alt={e.title}
                     width={100}
                     height={100}
-                    className="w-full h-full object-cover object-center as"
+                    className="w-full h-full object-cover object-top as"
                   />
                 </div>
                 <h3 className="text-md md:text-lg font-bold text-[#4a404a] p-2">

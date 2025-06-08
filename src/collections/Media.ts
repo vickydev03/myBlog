@@ -10,14 +10,21 @@ const uploadConfig = {
     {
       name: "og",
       width: 1200,
-      height: 600,
+      height: 630,
       crop: "center",
+      position:"center"
     },
+
   ],
+  admin:{
+    allowFocalPoint:true,
+    useAsTitle:"alt"
+  }
 } as unknown as NonNullable<CollectionConfig["upload"]>;
 
 export const Media: CollectionConfig = {
   slug: "media",
+  
   access: {
     read: () => true,
     delete: ({ req }) => isAdmin(req.user),

@@ -1,6 +1,9 @@
 "use client";
 import React, { Suspense } from "react";
-import ArticlesList from "./ArticlesList";
+// import ArticlesList from "./ArticlesList";
+import dynamic from "next/dynamic";
+
+const ArticlesList = dynamic(() => import("./ArticlesList"));
 import { ArticleCardSkeleton } from "./ArticleCard";
 import { DEFAULT_LIMIT } from "@/constant";
 

@@ -1,7 +1,7 @@
 "use client";
 import { Media } from "@/payload-types";
 import { useTRPC } from "@/trpc/client";
-import {  useSuspenseQuery } from "@tanstack/react-query";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import React, { Suspense } from "react";
 import { useArticleFilters } from "../../hooks/useArticleFilterHook";
@@ -12,7 +12,7 @@ interface DataProps {
   id: string;
   title: string;
   poster?: string | Media | null;
-  slug:string
+  slug: string;
 }
 
 function ArticleSidebar() {
@@ -52,7 +52,7 @@ function ArticleSidebar() {
     hidden: { opacity: 0, y: 20 },
     show: { opacity: 1, y: 0 },
   };
-  
+
   return (
     <motion.section
       initial={{ x: "100%" }}
@@ -85,7 +85,7 @@ function ArticleSidebar() {
                         >
                           <div className=" relative aspect-square flex items-center bg-red-3000  ">
                             <Image
-                              className=" flex items-center object-center object-cover trend-img"
+                              className=" flex items-center object-top object-cover trend-img"
                               src={
                                 typeof e.poster === "string"
                                   ? e.poster

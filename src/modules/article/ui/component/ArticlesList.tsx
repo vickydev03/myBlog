@@ -3,11 +3,14 @@ import { DEFAULT_LIMIT } from "@/constant";
 import { useTRPC } from "@/trpc/client";
 import { useSuspenseInfiniteQuery } from "@tanstack/react-query";
 import React, { useEffect, useRef } from "react";
-import ArticleCard from "./ArticleCard";
-import { useArticleFilters } from "../../hooks/useArticleFilterHook";
+// import ArticleCard from "./ArticleCard";
 import { InboxIcon } from "lucide-react";
 import Link from "next/link";
-import Footer from "@/app/(app)/(home)/_component/Footer";
+import { useArticleFilters } from "../../hooks/useArticleFilterHook";
+// import Footer from "@/app/(app)/(home)/_component/Footer";
+import dynamic from "next/dynamic";
+const Footer=dynamic(()=>import("@/app/(app)/(home)/_component/Footer"))
+const ArticleCard=dynamic(()=>import("./ArticleCard"))
 // import { trpc } from "@/trpc/server";
 // interface Props {
 //   id: string;

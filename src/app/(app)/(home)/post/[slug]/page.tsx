@@ -5,9 +5,10 @@ import { getQueryClient, trpc } from "@/trpc/server";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 import React, { Suspense } from "react";
 import Footer from "../../_component/Footer";
+
 import { Metadata } from "next";
 import { fetchArticleBySlug } from "@/lib/fetchArticleBySlug";
-import configPromise from '@payload-config'
+import configPromise from "@payload-config";
 
 import { getPayload } from "payload";
 import { notFound } from "next/navigation";
@@ -40,7 +41,7 @@ export async function generateMetadata({
               {
                 url: `${baseUrl}${data.meta.image.url}`,
                 width: 1200,
-                height: 600,
+                height: 630,
                 alt: data.meta.image.alt,
               },
             ]
@@ -51,8 +52,7 @@ export async function generateMetadata({
       },
       twitter: {
         card: "summary_large_image",
-        title:data.meta?.title ||data.title
-        
+        title: data.meta?.title || data.title,
       },
     };
   } catch (error) {
@@ -78,15 +78,15 @@ export async function generateStaticParams() {
   // }
 
   // const json = await res.json();
-  const payload=await getPayload({
-    config:configPromise
-  })
-    const data=await payload.find({
-      collection:"articles",
-      pagination:false,
-      limit:30
-    })
-    
+  const payload = await getPayload({
+    config: configPromise,
+  });
+  const data = await payload.find({
+    collection: "articles",
+    pagination: false,
+    limit: 30,
+  });
+
   return data.docs.map((e: { slug: string }) => ({
     slug: e.slug,
   }));
@@ -104,9 +104,8 @@ async function page({ params }: { params: Promise<{ slug: string }> }) {
   // );
   void queryClient.prefetchQuery(trpc.articles.trending.queryOptions());
 
-  if(!article){
-   return notFound()
-   
+  if (!article) {
+    return notFound();
   }
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>

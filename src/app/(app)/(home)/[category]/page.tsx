@@ -1,12 +1,13 @@
 import { DEFAULT_LIMIT } from "@/constant";
-import ArticleSidebar, {
-  ArticleSidebarSkeleton,
-} from "@/modules/article/ui/component/ArticleSidebar";
+import ArticleSidebar, { ArticleSidebarSkeleton } from "@/modules/article/ui/component/ArticleSidebar";
+
 import ArticleView from "@/modules/article/ui/view/ArticleView";
+export const dynamic = "force-dynamic";
+
+
 import { getQueryClient, trpc } from "@/trpc/server";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 import React, { Suspense } from "react";
-export const dynamic = "force-dynamic";
 
 interface Props {
   params: Promise<{ category: string }>;
