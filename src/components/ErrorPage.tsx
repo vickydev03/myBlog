@@ -8,6 +8,8 @@ interface ErrorPageProps {
 }
 
 const ErrorPage = ({ error, reset }: ErrorPageProps) => {
+  console.log(error);
+  
   const handleRefresh = () => {
     if (reset) {
       reset();
