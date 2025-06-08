@@ -2,8 +2,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Inter } from "next/font/google";
 const intel = Inter({
-  variable: "--font-lora",
+  variable: "--font-inter",
   subsets: ["latin"],
+  display:"swap"
+
 });
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";

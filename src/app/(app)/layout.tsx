@@ -9,9 +9,12 @@ import PageTransition from "@/components/Pagetransition";
 const lora = Lora({
   variable: "--font-lora",
   subsets: ["latin"],
+  display:"swap"
 });
 
+
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || ''),
   title: {
     default:"finnsavy",
     template:"%s -finnsavy"

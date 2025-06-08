@@ -7,6 +7,7 @@ import { useLenis } from "./_hooks/useLenis";
 const lora = Lora({
   variable: "--font-lora",
   subsets: ["latin"],
+  display:"swap"
 });
 
 // export const metadata: Metadata = {

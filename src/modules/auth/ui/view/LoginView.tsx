@@ -8,7 +8,7 @@ import LoginForm from "@/app/(app)/(auth)/_component/LoginForm";
 
 function LoginView() {
   return (
-    <div className="min-h-screen flex font-lora bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
+    <div className="min-h-screen flex bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
       {/* Left Section - Form */}
       <div className="flex-1 flex items-center justify-center p-8 lg:p-12">
         <div className="w-full max-w-lg space-y-8">

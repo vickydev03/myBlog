@@ -6,10 +6,10 @@ import { RichText } from "@/lib/RichText";
 import { Inter } from "next/font/google";
 import { cn } from "@/lib/utils";
 import SwiperComponent from "./SwiperComponent";
-import Image from "next/image";
 import { format } from "date-fns";
 import { Media } from "@/payload-types";
 import { motion } from "motion/react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 // import {Richt}
 const monts = Inter({
   weight: ["800"],
@@ -54,15 +54,13 @@ function ArticleViewOne({ slug }: { slug: string }) {
       tags: Array.isArray(data.tags)
         ? data.tags.map((tag) => (typeof tag === "string" ? tag : tag.name))
         : [],
-        currentPostSlug:slug
+      currentPostSlug: slug,
     })
   );
 
   // let x:DataProps=data
 
   const formattedDate = format(data.createdAt, "dd MMM yyyy");
-
- 
 
   return (
     <motion.div
@@ -85,24 +83,28 @@ function ArticleViewOne({ slug }: { slug: string }) {
         <div className="w-full flex items-center gap-4 sm:gap-6 md:gap-7 lg:gap-8 xl:gap-9  gap-y-2 bg-red-2000  t b p-2">
           <div className="flex items-center gap-2">
             <div className="relative aspect-square">
-              <Image
-              loading="lazy"
-                src={
-                  typeof data.author === "object" &&
-                  data.author?.image &&
-                  typeof data.author.image === "object"
-                    ? data.author.image.url || "https://cdn-icons-png.flaticon.com/512/847/847969.png"
-                    : "https://cdn-icons-png.flaticon.com/512/847/847969.png"
-                }
-                alt={
-                  typeof data.author === "object"
-                    ? data.author?.name || data.author?.email || ""
-                    : "Author"
-                }
-                width={25}
-                height={25}
-                className="rounded-full object-cover"
-              />
+              <Avatar className="w-8 h-8">
+                <AvatarImage
+                  src={
+                    typeof data.author === "object" &&
+                    data.author?.image &&
+                    typeof data.author.image === "object"
+                      ? data.author.image.url ||
+                        "https://cdn-icons-png.flaticon.com/512/847/847969.png"
+                      : "https://cdn-icons-png.flaticon.com/512/847/847969.png"
+                  }
+                  alt={
+                    typeof data.author === "object"
+                      ? data.author?.name || ""
+                      : "Author"
+                  }
+                />
+                <AvatarFallback>
+                  {typeof data.author === "object"
+                    ? data.author?.name || ""
+                    : "Author"}
+                </AvatarFallback>
+              </Avatar>
             </div>
             <h5 className={cn("font-medium text-[#2f2e2e] text-sm md:text-md")}>
               <span className="font-semibold text-base ">
@@ -138,7 +140,7 @@ function ArticleViewOne({ slug }: { slug: string }) {
                 .map((doc) => ({
                   id: doc.id,
                   title: doc.title,
-                  slug:doc.slug,
+                  slug: doc.slug,
                   poster: doc.poster as Media,
                 }))}
             />
@@ -152,7 +154,7 @@ function ArticleViewOne({ slug }: { slug: string }) {
                 .filter((doc) => doc.poster && typeof doc.poster === "object")
                 .map((doc) => ({
                   id: doc.id,
-                  slug:doc.slug,
+                  slug: doc.slug,
                   title: doc.title,
                   poster: doc.poster as Media,
                 }))}

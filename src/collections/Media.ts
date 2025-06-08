@@ -10,7 +10,7 @@ const uploadConfig = {
     {
       name: "og",
       width: 1200,
-      height: 630,
+      height: 600,
       crop: "center",
     },
   ],
