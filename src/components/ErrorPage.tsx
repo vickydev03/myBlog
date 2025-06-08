@@ -46,7 +46,7 @@ const ErrorPage = ({ error, reset }: ErrorPageProps) => {
           </div>
 
           {/* Error Details (if available) */}
-          {error && (
+          {/* {error && (
             <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 text-left">
               <h3 className="text-sm font-medium text-gray-700 mb-2">
                 Error Details:
@@ -60,7 +60,7 @@ const ErrorPage = ({ error, reset }: ErrorPageProps) => {
                 </p>
               )}
             </div>
-          )}
+          )} */}
 
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-3 pt-4">

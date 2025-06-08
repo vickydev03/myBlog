@@ -22,7 +22,8 @@ export default function GlobalError({
   ) {
     return <NotFound />;
   }
-
+  
   // Handle all other errors
-  return <ErrorPage error={error} />;
+  return <NotFound />;
+  // return <ErrorPage error={error} />;
 }
