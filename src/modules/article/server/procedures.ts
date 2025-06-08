@@ -13,49 +13,70 @@ export const ArticleRouter = createTRPCRouter({
       })
     )
     .query(async ({ ctx, input }) => {
-      const where: Where = {
-        and: [
-          {
-            slug: {
-              equals: input.slug,
+      try {
+        const where: Where = {
+          and: [
+            {
+              slug: {
+                equals: input.slug,
+              },
             },
-          },
-          {
-            isPrivate: {
-              not_equals: true,
+            {
+              isPrivate: {
+                not_equals: true,
+              },
             },
+          ],
+        };
+
+        const data = await ctx.payload.find({
+          collection: "articles",
+          where,
+          limit: 1,
+          select: {
+            meta: true,
+            content: true,
+            poster: true,
+            title: true,
+            author: true,
+            category: true,
+            slug: true,
+            createdAt: true,
+            "read-time": true,
+            tags: true,
+            description: true,
           },
-        ],
-      };
+        });
 
-      const data = await ctx.payload.find({
-        collection: "articles",
-        where,
-        limit: 1,
-        select: {
-          meta:true,
-          content: true,
-          poster: true,
-          title: true,
-          author: true,
-          category: true,
-          slug: true,
-          createdAt: true,
-          "read-time": true,
-          tags: true,
-          description: true,
-        },
-      });
+        if (!data.docs[0]) {
+          throw new TRPCError({
+            code: "NOT_FOUND",
+            message: "This post is not found",
+          });
+        }
 
-      if (!data.docs[0]) {
+        // return data.docs[0] ?? null;
+        return {
+          ...data.docs[0],
+          poster: data.docs[0].poster as Media,
+          meta: {
+            ...data.docs[0].meta,
+            image: data.docs[0].meta?.image as Media,
+          },
+        };
+      } catch (error) {
+        if (error instanceof TRPCError) {
+          throw error;
+        }
+
         throw new TRPCError({
-          code: "NOT_FOUND",
-          message: "This post is not found",
+          code: "INTERNAL_SERVER_ERROR",
+          message:
+            error instanceof Error
+              ? error.message
+              : "An unknown error occurred",
         });
       }
-
-      // return data.docs[0] ?? null;
-      return {...data.docs[0],poster:data.docs[0].poster as Media,meta:{...data.docs[0].meta,image:data.docs[0].meta?.image as Media}}
     }),
   getMany: baseProcedure
     .input(

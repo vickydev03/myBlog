@@ -52,7 +52,7 @@ function LoginForm() {
       return res.json();
     },
     onError: (error) => {
-      console.log(error, "ajaysingh");
+      // console.log(error, "ajaysingh");
       toast.error(error.message);
     },
     onSuccess: handleSuccess,

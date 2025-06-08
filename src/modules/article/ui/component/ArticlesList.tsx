@@ -39,7 +39,7 @@ function ArticlesList({ categorySlug }: { categorySlug?: string }) {
         }
       )
     );
-  console.log(data, "server data");
+  // console.log(data, "server data");
 
   const loadMoreRef = useRef<HTMLDivElement | null>(null);
 

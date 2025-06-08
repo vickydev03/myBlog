@@ -147,7 +147,7 @@ export const authRouter = createTRPCRouter({
 
       return loginData; // Return user data and token
     } catch (error) {
-      console.log("Login Error:", error);
+      // console.log("Login Error:", error);
       if (error instanceof TRPCError) {
         throw error;
       }

@@ -10,6 +10,7 @@ import { fetchArticleBySlug } from "@/lib/fetchArticleBySlug";
 import configPromise from '@payload-config'
 
 import { getPayload } from "payload";
+import { notFound } from "next/navigation";
 export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
@@ -103,6 +104,10 @@ async function page({ params }: { params: Promise<{ slug: string }> }) {
   // );
   void queryClient.prefetchQuery(trpc.articles.trending.queryOptions());
 
+  if(!article){
+   return notFound()
+   
+  }
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
       <Suspense fallback={<ArticleSkeleton />}>

@@ -5,7 +5,7 @@ import { motion } from "motion/react";
 
 function DarkmodeBtn() {
   const {  setTheme,resolvedTheme } = useTheme();
-  console.log(resolvedTheme,"themse");
+  // console.log(resolvedTheme,"themse");
   const isDark = resolvedTheme === "dark";
   return (
     <motion.div transition={{duration:1}}>

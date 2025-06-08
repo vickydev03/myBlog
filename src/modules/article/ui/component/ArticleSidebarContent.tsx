@@ -22,7 +22,7 @@ function ArticleSidebarContent() {
 
   const { data: tags } = useSuspenseQuery(trpc.tags.getMany.queryOptions());
 
-  console.log(tags, "trending");
+  // console.log(tags, "trending");
 
   function toggleTag(tag: string) {
     setFilters((prev) => {
