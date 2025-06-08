@@ -15,7 +15,7 @@ export default function GlobalError({
 
   // Handle custom not found errors
   if (
-    error.message === "This post is not found" ||
+    error.message?.includes("not found") ||
     error.cause === "NOT_FOUND" ||
     error.name === "NotFoundError"
   ) {

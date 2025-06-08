@@ -93,10 +93,9 @@ export const authRouter = createTRPCRouter({
           value: loginData.token,
           httpOnly: true,
           path: "/",
-          sameSite:"none",
-          secure:true
+          sameSite: "none",
+          secure: true,
         });
-  
 
         return loginData; // Return user data along with token
       } catch (error) {
@@ -141,13 +140,16 @@ export const authRouter = createTRPCRouter({
         value: loginData.token,
         httpOnly: true,
         path: "/",
-        sameSite:"none",
-        secure:true
+        sameSite: "none",
+        secure: true,
       });
 
       return loginData; // Return user data and token
     } catch (error) {
-      // console.log("Login Error:", error);
+      // TODO: Replace with proper logging library (e.g., winston, pino)
+      if (process.env.NODE_ENV === "development") {
+        console.error("Login Error:", error);
+      }
       if (error instanceof TRPCError) {
         throw error;
       }
@@ -159,7 +161,6 @@ export const authRouter = createTRPCRouter({
       });
     }
   }),
-  
 
   // Logout user
   logout: baseProcedure.mutation(async () => {
