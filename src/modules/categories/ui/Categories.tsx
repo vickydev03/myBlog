@@ -112,10 +112,7 @@ function Categories({ data }: { data: Category[] }) {
           >
             <Link
               href={`/category/${e.slug}`}
-              className={cn(
-                intel.className,
-                "text-[##242724]  text-[14px]",
-              )}
+              className={cn(intel.className, "text-[#242724] text-[14px]")}
             >
               {e.name}
             </Link>

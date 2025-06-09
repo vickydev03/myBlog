@@ -4,6 +4,3 @@ import { cache } from "react";
 export const fetchArticleBySlug = cache(async (slug: string) => {
   return await caller.articles.getOne({ slug });
 });
-// export const fetchArticle = cache(async (slug: string) => {
-//   return await caller.articles.getMany({});
-// });

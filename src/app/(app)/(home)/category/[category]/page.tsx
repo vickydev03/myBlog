@@ -62,7 +62,7 @@ export async function generateMetadata({
       title: "category Not Found",
       description: "The requested category could not be found.",
       alternates: {
-        canonical: `${process.env.NEXT_PUBLIC_APP_URL}/${category}`,
+        canonical: `${process.env.NEXT_PUBLIC_APP_URL}/category/${category}`,
       },
     };
   }

@@ -45,19 +45,9 @@ export const categoriesRouter = createTRPCRouter({
         },
       });
 
-      console.log(data, "mai hi hu data");
-
-      // const formattedData: CustomCategory[] = data.docs.map((doc: any) => ({
-      //   ...doc,
-      //   subCategories:
-      //     doc?.subCategories?.docs ??
-      //     []?.map((doc) => ({ ...(doc as Category) })),
-      //   subcategories: undefined,
-      // }));
-
-      // const formattedData: Category[] = data.docs.map((doc: Category) => ({
-      //   ...doc,
-      // }));
+      if (!data.docs.length) {
+        throw new Error(`Category with slug '${input.categorySlug}' not found`);
+      }
 
       return {
         ...data.docs[0],

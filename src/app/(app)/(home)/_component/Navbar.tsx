@@ -227,8 +227,9 @@ export const Profile = ({
     typeof image === "string"
       ? image
       : image?.url || "https://cdn-icons-png.flaticon.com/512/847/847969.png";
-  const imageAlt = typeof image === "string" ? "" : image?.alt || "";
 
+  const imageAlt = typeof image === "object" ? image?.alt : "";
+  // image
   // const handleDashboard=
   return (
     <DropdownMenu>
