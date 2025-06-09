@@ -320,11 +320,7 @@ ul {
 }
 
 .content img:not(img:nth-of-type(1)) {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  object-position: center;
-  aspect-ratio: 1;
+  aspect-ratio: auto;
   margin-left: auto;
   margin-right: auto;
 }
@@ -334,56 +330,69 @@ ul {
 
 @media (min-width: 350px) and (max-width: 500px) {
   .content img:nth-of-type(1) {
-    max-width: 500px;
-    max-height: 200px;
-    height: 100%;
+    max-width: 100%;
+    height: auto; /* 👈 auto height adjusts based on width */
     width: 100%;
     object-fit: contain;
     object-position: center;
-    /* image-orientation: from-image; */
-    aspect-ratio: 1;
     margin-left: auto;
     margin-right: auto;
+    display: block;
   }
+
+  .content img:not(img:nth-of-type(1)) {
+    max-width: 100%;
+    max-height: 300px;
+    width: 80%;
+    height: auto; /* 👈 important for varying heights */
+    object-fit: contain;
+    object-position: top;
+    aspect-ratio: auto;
+    margin: 1rem auto;
+    display: block;
+  }
+
   .description {
     font-size: 0.8rem;
   }
+
   .content {
     padding: 20px 15px;
   }
+
   .content h1 {
     font-size: 1.5rem;
   }
+
   .content h2 {
     font-size: 1.2rem;
     color: #4a404a;
     letter-spacing: 1px;
     font-weight: bold;
   }
+
   .content h3 {
     font-size: 1rem;
     color: #4a404a;
     letter-spacing: 1px;
     font-weight: bold;
   }
+
   .content h4 {
     font-size: 0.9rem;
     color: #4a404a;
     letter-spacing: 1px;
     font-weight: bold;
   }
-  .content h5 {
-    font-size: 0.8rem;
-    color: #4a404a;
-    letter-spacing: 1px;
-    font-weight: bold;
-  }
+
+  .content h5,
   .content h6 {
     font-size: 0.8rem;
     color: #4a404a;
     letter-spacing: 1px;
     font-weight: bold;
   }
+
   .content p {
     letter-spacing: 1px;
     font-size: 1rem;
@@ -397,21 +406,11 @@ ul {
     font-weight: bolder;
   }
 
-  .content img:not(img:nth-of-type(1)) {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-    object-position: center;
-    aspect-ratio: 1;
-    margin-left: auto;
-    margin-right: auto;
-    width: 80%;
-    height: 100%;
-  }
   .header {
     font-size: 1.2rem;
   }
 }
+
 @media (min-width: 600px) and (max-width: 700px) {
   .description {
     font-size: 0.9rem;
@@ -625,20 +624,14 @@ ul {
 }
 
 @media (min-width: 1100px) and (max-width: 1600px) {
-  /* .content {
-    padding: 30px 40px;
-  } */
-
   .content img:nth-of-type(1) {
     max-width: 100%;
     max-height: 475px;
-    /* min-height: 240px; */
     height: 100%;
     width: 100%;
     object-fit: cover;
     object-position: top;
-    /* image-orientation: from-image; */
-    aspect-ratio: 1;
+    aspect-ratio: auto;
     margin-left: auto;
     margin-right: auto;
   }
@@ -699,12 +692,13 @@ ul {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
-    object-position: center;
-    aspect-ratio: 1;
+    object-position: top;
+    aspect-ratio: auto;
     margin-left: auto;
     margin-right: auto;
     width: 70%;
-    height: 80%;
+    height: auto;
+    /* box-shadow: 30px 20px 40px 4px rgba(0, 0, 0, 0.21); */
   }
 }
 

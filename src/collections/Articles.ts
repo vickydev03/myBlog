@@ -1,4 +1,5 @@
 import { isAdmin } from "@/lib/access";
+import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import type { CollectionConfig } from "payload";
 
 export const Articles: CollectionConfig = {
@@ -91,9 +92,33 @@ export const Articles: CollectionConfig = {
     {
       name: "content",
       type: "richText",
-      admin: {
-        description: "Write the article content here",
-      },
+      editor: lexicalEditor({
+        features: ({ defaultFeatures }) => [
+          ...defaultFeatures,
+          {
+            key: "mediaUpload",
+            feature: {
+              plugins: [],
+              nodes: [],
+              upload: {
+                collections: {
+                  media: {
+                    fields: [
+                      {
+                        name: "alt",
+                        type: "text",
+                        label: "Alt Text",
+                        required: false,
+                      },
+                    ],
+                  },
+                },
+              },
+            },
+            serverFeatureProps: {},
+          },
+        ],
+      }),
     },
     {
       name: "tags",

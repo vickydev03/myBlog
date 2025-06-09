@@ -7,13 +7,13 @@ const uploadConfig = {
   staticURL: "/media",
   maxFileSize: 1024 * 1024 * 2,
   imageSizes: [
-    {
-      name: "og",
-      width: 1200,
-      height: 630,
-      crop: "center",
-      position:"center"
-    },
+    // {
+    //   name: "og",
+    //   width: 1200,
+    //   height: 630,
+    //   crop: "center",
+    //   position:"center"
+    // },
 
   ],
   admin:{

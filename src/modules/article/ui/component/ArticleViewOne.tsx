@@ -205,7 +205,7 @@ function ArticleViewOne({ slug }: { slug: string }) {
         </div>
 
         {/* content */}
-        <div className=" relative mt-5 prose prose-lg prose-headings:scroll-mt-20 prose-headings:text-gray-900 prose-p:text-gray-700 prose-img:rounded-lg prose-img:mx-auto prose-img:w-full prose-img:h-auto prose-img:max-h-[400px] sm:prose-img:max-h-[500px] md:prose-img:max-h-[600px] prose-img:object-contain prose-img:my-4">
+        <div className=" relative mt-4 prose prose-lg prose-headings:scroll-mt-20 prose-headings:text-gray-900 prose-p:text-gray-700 prose-img:rounded-lg prose-img:mx-auto prose-img:w-full prose-img:h-auto prose-img:max-h-[400px] sm:prose-img:max-h-[500px] md:prose-img:max-h-[600px] prose-img:object-contain prose-img:my-4">
           {data.content && <RichText data={data.content} />}
         </div>
       </div>
