@@ -7,9 +7,8 @@ const intel = Inter({
   display: "swap",
 });
 // import CategoriesSideBar from "./CategoriesSideBar";
-
 const CategoriesSideBar = dynamic(() => import("./CategoriesSideBar"), {
-  ssr: false, 
+  ssr: false,
 });
 
 import { cn } from "@/lib/utils";
@@ -19,7 +18,6 @@ import { useParams } from "next/navigation";
 import { Category } from "@/payload-types";
 import Link from "next/link";
 import dynamic from "next/dynamic";
-
 
 function Categories({ data }: { data: Category[] }) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -33,7 +31,7 @@ function Categories({ data }: { data: Category[] }) {
 
   const params = useParams();
   const categoryParams = params.category as string | undefined;
-  const activeCategory = categoryParams || "all";
+  const activeCategory = categoryParams || "browse-all";
   const activeCategoryIndex = data.findIndex(
     (cat) => cat.slug === activeCategory
   );
@@ -113,8 +111,11 @@ function Categories({ data }: { data: Category[] }) {
             key={e.id}
           >
             <Link
-              href={e.slug}
-              className={cn(intel.className, "text-[##242724]  text-[14px]")}
+              href={`/category/${e.slug}`}
+              className={cn(
+                intel.className,
+                "text-[##242724]  text-[14px]",
+              )}
             >
               {e.name}
             </Link>

@@ -20,7 +20,7 @@ export default function GlobalError({
     error.cause === "NOT_FOUND" ||
     error.name === "NotFoundError"
   ) {
-    return <NotFound />;
+    notFound();
   }
   
   // Handle all other errors
