@@ -74,7 +74,7 @@ function ArticleCard({ data }: Props) {
                       data.author?.image?.url ||
                       "https://cdn-icons-png.flaticon.com/512/847/847969.png"
                     }
-                    alt={data.author.image.alt || "user"}
+                    alt={data?.author?.image?.alt || "user"}
                   />
                   <AvatarFallback>
                     {data.author.name || "Unknown"}
