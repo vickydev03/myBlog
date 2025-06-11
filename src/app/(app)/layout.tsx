@@ -16,8 +16,8 @@ const lora = Lora({
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || ''),
   title: {
-    default:"finnsavy",
-    template:"%s -finnsavy"
+    default:"FinoBlitz",
+    template:"%s -FinoBlitz"
   },
   description: "Where tech meet finance:",
   twitter:{
