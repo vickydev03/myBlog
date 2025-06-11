@@ -74,9 +74,11 @@ function Navbar() {
       className="flex justify-between items-center navbar t px-4 py-[4px] b xl:py-5 dark:dark-b "
     >
       <div className="flex items-center justify-center gap-4 ">
-        <h2 className="font-bold  text-4xl flex items-center justify-center ">
-          Chronicle
-        </h2>
+        <Link href={"/"}>
+          <h2 className="font-bold  text-4xl flex items-center justify-center ">
+            FinoBlitz
+          </h2>
+        </Link>
         <div className="hidden sm:block ">
           <SearchBar path={path} />
         </div>
@@ -118,7 +120,12 @@ function Navbar() {
             </div>
           </form>
         )}
-        <div className={cn(" flex items-center  gap-4", hideOther && "hidden")}>
+        <div
+          className={cn(
+            " flex items-center  gap-4 px-2 lg:px-4 ",
+            hideOther && "hidden"
+          )}
+        >
           {/* <DarkmodeBtn /> */}
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -234,7 +241,7 @@ export const Profile = ({
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <div className="flex items-center cursor-pointer">
+        <div className="flex items-center cursor-pointer ">
           <Avatar className="w-8 h-8">
             <AvatarImage src={imageUrl} alt={imageAlt || "user"} />
             <AvatarFallback>{imageAlt}</AvatarFallback>
@@ -252,7 +259,7 @@ export const Profile = ({
 
         <DropdownMenuSeparator className="bg-gray-200" />
         {admin && (
-          <DropdownMenuItem className="px-2 py-1 t hover:bg-gray-100 rounded-md transition-colors">
+          <DropdownMenuItem className="px-2 py-1 hover:bg-gray-100 rounded-md transition-colors b">
             <Button
               variant="link"
               className="text-sm font-medium text-gray-700 w-full text-left p-0 h-auto border-none"
@@ -264,7 +271,7 @@ export const Profile = ({
             </Button>
           </DropdownMenuItem>
         )}
-        <DropdownMenuItem className="px-2 py-1 hover:bg-gray-100 rounded-md transition-colors">
+        <DropdownMenuItem className="px-2 py-1 hover:bg-gray-100 rounded-md transition-color">
           <Button
             variant="link"
             className="text-sm font-medium text-gray-700 w-full text-left p-0 h-auto border-none"
