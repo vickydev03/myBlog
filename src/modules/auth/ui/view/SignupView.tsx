@@ -1,10 +1,11 @@
-import { BarChart3, Zap, Brain, TrendingUp } from "lucide-react";
+import { BarChart3, Zap, Brain } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 import SignupForm from "../component/SignupForm";
 import { Lora } from "next/font/google";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import MyLogo from "@/app/(app)/(home)/_component/MyLogo";
 const lora = Lora({
   variable: "--font-lora",
   subsets: ["latin"],
@@ -24,12 +25,7 @@ function SignupView() {
           {/* Logo/Brand Section */}
           <div className="text-center space-y-6">
             <div className="flex items-center justify-center space-x-3">
-              <div className="p-3 bg-gradient-to-br from-emerald-600 to-teal-700 rounded-xl shadow-lg">
-                <TrendingUp className="h-8 w-8 text-white" />
-              </div>
-              <h1 className="text-3xl font-bold text-slate-800 tracking-tight">
-                FinanceHub
-              </h1>
+              <MyLogo height={"55"} width={"200"} />
             </div>
             <div className="space-y-3">
               <h2 className="text-2xl font-semibold text-slate-700">

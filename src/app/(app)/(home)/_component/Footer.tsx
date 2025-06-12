@@ -1,12 +1,15 @@
 // components/Footer.tsx
 import Link from "next/link";
+import MyLogo from "./MyLogo";
 
 export default function Footer() {
   return (
-    <footer className="bg-white border-t border-gray-200  py-4 max-h-[100px]   ">
+    <footer className="bg-white border-t border-gray-200  py-4 max-h-[90px]   ">
       <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center space-y-3 md:space-y-0">
         {/* Brand */}
-        <div className="text-gray-800 font-semibold text-lg">FinoBlitz</div>
+        <div className="text-gray-800 font-semibold text-lg">
+          <MyLogo width="100" height="40" />
+        </div>
 
         {/* Navigation */}
         <div className="flex space-x-6 text-sm text-gray-600">

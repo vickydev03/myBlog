@@ -1,9 +1,10 @@
 // "use client"
 import Image from "next/image";
 import React from "react";
-import { TrendingUp, BarChart3, Brain, Zap } from "lucide-react";
+import {  BarChart3, Brain, Zap } from "lucide-react";
 import Link from "next/link";
 import LoginForm from "@/app/(app)/(auth)/_component/LoginForm";
+import MyLogo from "@/app/(app)/(home)/_component/MyLogo";
 // import { useRouter } from 'next/navigation';
 
 function LoginView() {
@@ -15,12 +16,10 @@ function LoginView() {
           {/* Logo/Brand Section */}
           <div className="text-center space-y-6">
             <div className="flex items-center justify-center space-x-3">
-              <div className="p-3 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-xl shadow-lg">
-                <TrendingUp className="h-8 w-8 text-white" />
-              </div>
-              <h1 className="text-3xl font-bold text-slate-800 tracking-tight">
-                FinanceHub
-              </h1>
+              {/* <div className="p-3 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-xl shadow-lg"> */}
+              {/* <TrendingUp className="h-8 w-8 text-white" /> */}
+              {/* </div> */}
+                <MyLogo width={"208"} height={"54"} />
             </div>
             <div className="space-y-3">
               <h2 className="text-2xl font-semibold text-slate-700">
@@ -76,7 +75,7 @@ function LoginView() {
           src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
           alt="Learning about finance and technology through blogging and research"
           className="absolute inset-0 w-full h-full object-cover"
-         sizes="(max-width: 1024px) 100vw, 50vw"
+          sizes="(max-width: 1024px) 100vw, 50vw"
         />
         <div className="absolute inset-0 bg-gradient-to-br from-blue-900/70 to-indigo-900/90"></div>
         <div className="absolute inset-0 flex flex-col justify-end p-12">

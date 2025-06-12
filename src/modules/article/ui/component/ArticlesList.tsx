@@ -9,8 +9,8 @@ import Link from "next/link";
 import { useArticleFilters } from "../../hooks/useArticleFilterHook";
 // import Footer from "@/app/(app)/(home)/_component/Footer";
 import dynamic from "next/dynamic";
-const Footer=dynamic(()=>import("@/app/(app)/(home)/_component/Footer"))
-const ArticleCard=dynamic(()=>import("./ArticleCard"))
+const Footer = dynamic(() => import("@/app/(app)/(home)/_component/Footer"));
+const ArticleCard = dynamic(() => import("./ArticleCard"));
 // import { trpc } from "@/trpc/server";
 // interface Props {
 //   id: string;
@@ -97,7 +97,7 @@ function ArticlesList({ categorySlug }: { categorySlug?: string }) {
       )}
 
       {!hasNextPage && (
-        <div className="md:hidden h-10 bg-red-400">
+        <div className="md:hidden  bg-red-4000">
           <Footer />
         </div>
       )}

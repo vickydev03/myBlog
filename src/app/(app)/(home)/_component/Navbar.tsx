@@ -23,6 +23,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Media } from "@/payload-types";
 import { toast } from "sonner";
+import MyLogo from "./MyLogo";
 function Navbar() {
   const path = usePathname();
   // console.log(path);
@@ -71,13 +72,13 @@ function Navbar() {
       initial={{ y: -100, opacity: 0 }}
       transition={{ duration: 1 }}
       animate={{ y: 0, opacity: 1 }}
-      className="flex justify-between items-center navbar t px-4 py-[4px] b xl:py-5 dark:dark-b "
+      className="flex justify-between items-center navbar t px-4 py-[2px] b xl:py-5 dark:dark-b "
     >
       <div className="flex items-center justify-center gap-4 ">
         <Link href={"/"}>
-          <h2 className="font-bold  text-4xl flex items-center justify-center ">
-            FinoBlitz
-          </h2>
+          {/* <h2 className="font-bold  text-4xl flex items-center justify-center "> */}
+          <MyLogo width={"178"} height="44" />
+          {/* </h2> */}
         </Link>
         <div className="hidden sm:block ">
           <SearchBar path={path} />

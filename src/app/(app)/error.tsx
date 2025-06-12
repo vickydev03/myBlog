@@ -12,7 +12,7 @@ export default function GlobalError({
   if (error.digest?.includes("NEXT_NOT_FOUND")) {
     notFound();
   }
-  console.log(error.message, "yelo");
+  // console.log(error.message, "yelo");
 
   // Handle custom not found errors
   if (
