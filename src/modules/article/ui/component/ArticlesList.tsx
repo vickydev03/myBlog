@@ -97,7 +97,7 @@ function ArticlesList({ categorySlug }: { categorySlug?: string }) {
       )}
 
       {!hasNextPage && (
-        <div className="md:hidden  bg-red-4000">
+        <div className="md:hidden h-5  bg-red-4000">
           <Footer />
         </div>
       )}

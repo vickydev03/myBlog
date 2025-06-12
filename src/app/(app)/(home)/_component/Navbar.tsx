@@ -102,6 +102,7 @@ function Navbar() {
                 }}
                 // value={value}
                 // onChange={handleChange}
+                
                 className=" rounded-full border-none outline-none bg-[#f9f9f9f9] focus-visible:ring-0 focus-visible:outline-none input"
               />
               <svg

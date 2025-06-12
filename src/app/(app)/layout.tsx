@@ -5,24 +5,24 @@ import "./globals.css";
 import { TRPCReactProvider } from "@/trpc/client";
 import { Toaster } from "@/components/ui/sonner";
 import PageTransition from "@/components/Pagetransition";
+import { Analytics } from "@vercel/analytics/next";
 
 const lora = Lora({
   variable: "--font-lora",
   subsets: ["latin"],
-  display:"swap"
+  display: "swap",
 });
 
-
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || ''),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || ""),
   title: {
-    default:"FinoBlitz",
-    template:"%s -FinoBlitz"
+    default: "FinoBlitz",
+    template: "%s -FinoBlitz",
   },
   description: "Where tech meet finance:",
-  twitter:{
-    card:"summary_large_image"
-  }
+  twitter: {
+    card: "summary_large_image",
+  },
 };
 
 export default function RootLayout({
@@ -38,7 +38,10 @@ export default function RootLayout({
       <body className={`${lora.variable} font-serif antialiased `}>
         <NuqsAdapter>
           <TRPCReactProvider>
-            <PageTransition>{children}</PageTransition>
+            <PageTransition>
+              {children}
+              <Analytics />
+            </PageTransition>
             <Toaster />
           </TRPCReactProvider>
         </NuqsAdapter>
