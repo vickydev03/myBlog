@@ -6,7 +6,7 @@ import { TRPCReactProvider } from "@/trpc/client";
 import { Toaster } from "@/components/ui/sonner";
 import PageTransition from "@/components/Pagetransition";
 import { Analytics } from "@vercel/analytics/next";
-
+import { SpeedInsights } from "@vercel/speed-insights/next"
 const lora = Lora({
   variable: "--font-lora",
   subsets: ["latin"],
@@ -40,6 +40,7 @@ export default function RootLayout({
           <TRPCReactProvider>
             <PageTransition>
               {children}
+              <SpeedInsights/>
               <Analytics />
             </PageTransition>
             <Toaster />
