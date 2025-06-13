@@ -19,7 +19,7 @@ export default function Footer() {
           <Link href="/about" className="hover:text-gray-900 transition">
             About
           </Link>
-          <Link href="/contact" className="hover:text-gray-900 transition">
+          <Link href="/contact-us" className="hover:text-gray-900 transition">
             Contact
           </Link>
         </div>
@@ -52,7 +52,7 @@ export default function Footer() {
 
           {/* Gmail */}
           <a
-            href="mailto:peaker@gmail.com"
+            href="vickysinghdev03@gmail.com"
             aria-label="Gmail"
             className="text-gray-500 hover:text-gray-800 transition"
           >

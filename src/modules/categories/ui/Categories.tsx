@@ -30,6 +30,8 @@ function Categories({ data }: { data: Category[] }) {
   // console.log(isSidebarOpen, "sidebar ");
 
   const params = useParams();
+  console.log(params, "xxx");
+
   const categoryParams = params.category as string | undefined;
   const activeCategory = categoryParams || "browse-all";
   const activeCategoryIndex = data.findIndex(
@@ -89,8 +91,14 @@ function Categories({ data }: { data: Category[] }) {
         {/* hiddden meausre ref */}
         {data.map((e: Category) => {
           return (
-            <div key={e.id} className=" relative ">
-              <Link className="" href={e.slug}>
+            <div
+              key={e.id}
+              className={cn(
+                "relative",
+                params.category === e.slug && "underline underline-offset-4"
+              )}
+            >
+              <Link className="" href={`/category/${e.slug}`}>
                 {e.name}
               </Link>
             </div>
@@ -100,7 +108,7 @@ function Categories({ data }: { data: Category[] }) {
 
       {/* visible one */}
       <div
-        className="flex flex-nowrap items-center"
+        className="flex flex-nowrap items-center mx-auto"
         ref={containerRef}
         onMouseEnter={() => setIsAnyHovered(true)}
         onMouseLeave={() => setIsAnyHovered(false)}
@@ -112,7 +120,11 @@ function Categories({ data }: { data: Category[] }) {
           >
             <Link
               href={`/category/${e.slug}`}
-              className={cn(intel.className, "text-[#242724] text-[14px]")}
+              className={cn(
+                intel.className,
+                "text-[#242724] text-[14px]",
+                params.category === e.slug && "underline underline-offset-4"
+              )}
             >
               {e.name}
             </Link>
