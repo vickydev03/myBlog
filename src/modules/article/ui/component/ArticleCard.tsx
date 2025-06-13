@@ -103,11 +103,9 @@ function ArticleCard({ data }: Props) {
             <Image
               src={data.poster?.url || "/placeholder.png"}
               alt={data.poster.alt || "img"}
-              // loading="lazy"
               width={100}
               height={100}
               className="object-cover w-24 sm:w-36 md:w-28 lg:w-48 h-[120px] max-h-[120px] object-top max-w-[170px]  min-h-[90px]"
-              priority
             />
           </div>
         </motion.div>

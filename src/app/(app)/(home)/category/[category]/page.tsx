@@ -48,7 +48,7 @@ export async function generateMetadata({
           : [],
       },
       alternates: {
-        canonical: `${baseUrl}/${category}}`,
+        canonical: `${baseUrl}/category/${category}}`,
       },
       twitter: {
         card: "summary_large_image",
