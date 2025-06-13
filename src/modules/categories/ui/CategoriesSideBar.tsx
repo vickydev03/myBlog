@@ -41,7 +41,7 @@ function CategoriesSideBar({ open, onOpenChange, data }: Props) {
   const handleClick = (category: Category) => {
      
       if (parentCategories && selectedCategory) {
-        router.push(`${selectedCategory.slug}/${category.slug}`);
+        router.push(`${selectedCategory.slug}/category/${category.slug}`);
       } else {
         if ("all" === category.slug) {
           router.push("/");

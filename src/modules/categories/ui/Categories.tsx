@@ -141,7 +141,7 @@ function Categories({ data }: { data: Category[] }) {
                 "bg-white border-primary"
             )}
           >
-            Explore
+            <span className="hidden md:block">Explore</span>
             <ListFilterIcon className="ml-2" />
           </Button>
         </div>
