@@ -26,7 +26,7 @@ export async function generateMetadata({
 
     // console.log(data, "meta");
 
-    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "";
+    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://finoblitz.com";
     if (!baseUrl) {
       console.warn("NEXT_PUBLIC_APP_URL environment variable is not set");
     }
