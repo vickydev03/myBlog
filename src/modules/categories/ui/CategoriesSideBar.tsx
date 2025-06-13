@@ -46,7 +46,7 @@ function CategoriesSideBar({ open, onOpenChange, data }: Props) {
         if ("all" === category.slug) {
           router.push("/");
         } else {
-          router.push(`/${category.slug}`);
+          router.push(`/category/${category.slug}`);
         }
       }
       handleClose(false);
