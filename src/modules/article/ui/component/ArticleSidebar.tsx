@@ -135,7 +135,7 @@ function ArticleSidebar() {
 
           <section className="px-3 py-6 ">
             <h2 className="font-medium text-lg lg:text-2xl mb-3">
-              Connect with me
+            Ready to collaborate?
             </h2>
             <div className="flex items-center gap-6">
               <Link href="/" aria-label="Twitter" className=" size-6">

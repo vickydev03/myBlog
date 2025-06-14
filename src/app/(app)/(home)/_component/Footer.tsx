@@ -4,13 +4,13 @@ import MyLogo from "./MyLogo";
 
 export default function Footer() {
   return (
-    <footer className="bg-white border-t border-gray-200  py-4 max-h-[90px]   ">
+    <footer className="bg-white border-t border-gray-200   max-h-[90px] footer   ">
       <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center space-y-3 md:space-y-0">
         {/* Brand */}
         <div className="text-gray-800 font-semibold text-lg">
           <MyLogo width="100" height="40" />
         </div>
-
+    
         {/* Navigation */}
         <div className="flex space-x-6 text-sm text-gray-600">
           <Link href="/" className="hover:text-gray-900 transition">
@@ -28,7 +28,7 @@ export default function Footer() {
         <div className="flex space-x-5">
           {/* X (Twitter) */}
           <a
-            href="https://twitter.com"
+            href="https://x.com/FinoBlitz?t=p5qiLi_RN1qqUOyeas5mFA&s=09"
             target="_blank"
             aria-label="X"
             className="text-gray-500 hover:text-gray-800 transition"
@@ -52,7 +52,7 @@ export default function Footer() {
 
           {/* Gmail */}
           <a
-            href="vickysinghdev03@gmail.com"
+            href="finoblitz@gmail.com"
             aria-label="Gmail"
             className="text-gray-500 hover:text-gray-800 transition"
           >

@@ -18,9 +18,9 @@ function ArticleView({ categorySlug }: { categorySlug?: string }) {
           <Categories data={data} />
         </Suspense>
       </div>
-      <div className="box ">
+      <main className="box ">
         <Articles categorySlug={categorySlug} />
-      </div>
+      </main>
     </>
   );
 }

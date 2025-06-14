@@ -328,7 +328,11 @@ ul {
   padding: 3px 4px;
 }
 
-@media (min-width: 350px) and (max-width: 500px) {
+@media (min-width: 340px) and (max-width: 500px) {
+  .footer {
+    min-height: 100px;
+    /* max-height: 50px; */
+  }
   .content img:nth-of-type(1) {
     max-width: 100%;
     height: auto; /* 👈 auto height adjusts based on width */
@@ -742,3 +746,25 @@ html.lenis {
 .lenis.lenis-smooth [data-lenis-scroll] {
   will-change: transform;
 }
+
+.category {
+  display: flex;
+  flex-wrap: nowrap;
+  margin-right: auto;
+  margin-left: auto;
+  align-items: center;
+
+  /* gap: ; */
+}
+@media (min-width: 340px) and (max-width: 460px) {
+  .category {
+    gap: 0.8rem;
+    font-size: 15px;
+  }
+}
+/* @media (min-width: 460px) and (max-width: 520px) {
+  .category {
+    /* gap: 0.5rem; */
+    /* font-size: 5px; */
+  /* } */
+/* }  */

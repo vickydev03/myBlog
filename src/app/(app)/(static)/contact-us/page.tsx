@@ -1,5 +1,50 @@
 import Image from "next/image";
 import { Mail, ExternalLink } from "lucide-react";
+// app/contact/metadata.ts or inside the same file if using layout-based structure
+export const metadata = {
+  title: "Contact Us | FinoBlitz - Promote Your Business in Finance & Tech",
+  description:
+    "Promote your business with FinoBlitz—reach a targeted audience in finance, business, and tech with paid promotions and sponsored content.",
+  keywords: [
+    "FinoBlitz contact",
+    "business promotion",
+    "finance audience exposure",
+    "sponsored articles",
+    "tech product reviews",
+    "advertise on FinoBlitz",
+    "paid promotion",
+    "strategic brand exposure",
+    "banner ads",
+    "product reviews",
+    "content marketing for startups",
+  ].join(", "),
+  alternates: {
+    canonical: "https://finoblitz.com/contact",
+  },
+  openGraph: {
+    title: "Promote Your Business with FinoBlitz | Contact Us",
+    description:
+      "Want to grow your brand with targeted promotion? Contact FinoBlitz for strategic exposure to business, finance, and tech professionals.",
+    url: "https://finoblitz.com/contact",
+    siteName: "FinoBlitz",
+    images: [
+      {
+        url: "https://finoblitz.com/images/promotion.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Promote Your Business on FinoBlitz",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Promote Your Brand with FinoBlitz | Contact Page",
+    description:
+      "Reach business and finance professionals with sponsored articles, banner ads, and product reviews. Contact us today.",
+    images: ["https://finoblitz.com/images/promotion.jpg"],
+  },
+};
 
 export default function ContactPage() {
   return (
@@ -56,10 +101,10 @@ export default function ContactPage() {
                   Email Us
                 </h3>
                 <a
-                  href="mailto:promotions@finoblitz.com"
+                  href="mailto:finoblitz03@gmail.com"
                   className="font-lora text-blue-600 hover:text-blue-800 transition-colors flex items-center gap-2"
                 >
-                  promotions@finoblitz.com
+                  finoblitz03@gmail.com
                   <ExternalLink className="h-4 w-4" />
                 </a>
               </div>
@@ -84,7 +129,7 @@ export default function ContactPage() {
                   X (Twitter)
                 </h3>
                 <a
-                  href="https://twitter.com/finoblitz"
+                  href="https://x.com/FinoBlitz?t=p5qiLi_RN1qqUOyeas5mFA&s=09"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="font-lora text-blue-600 hover:text-blue-800 transition-colors flex items-center gap-2"

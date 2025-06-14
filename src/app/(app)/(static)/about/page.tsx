@@ -1,9 +1,51 @@
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import Head from "next/head";
+
+export const metadata: Metadata = {
+  title:
+    "About FinoBlitz – Empowering Professionals with Financial & Tech Insights",
+  description:
+    "Discover how FinoBlitz helps professionals grow through expert content in business, finance, technology, and AI. Learn about our mission and approach.",
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    title: "About FinoBlitz – Your Partner in Financial and Business Growth",
+    description:
+      "FinoBlitz delivers expert-driven content to help professionals excel in business, finance, and technology. Learn about our mission, vision, and values.",
+    url: "https://www.finoblitz.com/about",
+    type: "website",
+    images: [
+      {
+        url: "https://www.finoblitz.com/images/about-hero.jpg",
+        width: 1200,
+        height: 630,
+        alt: "About FinoBlitz",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About FinoBlitz – Helping You Grow Smarter in Finance & Tech",
+    description:
+      "Explore FinoBlitz's mission to empower professionals with actionable insights across business, finance, technology, and AI.",
+    images: ["https://www.finoblitz.com/images/about-hero.jpg"],
+  },
+};
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-white">
+    <>
+      <Head>
+        <meta
+          name="keywords"
+          content="About FinoBlitz, Business Insights, Financial Growth, Technology for Professionals, AI in Business,insurance"
+        />
+      </Head>
+      <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <section className="relative h-[50vh] overflow-hidden">
         <Image
@@ -216,5 +258,6 @@ export default function AboutPage() {
         </div>
       </section>
     </div>
+    </>
   );
 }

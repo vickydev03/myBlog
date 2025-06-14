@@ -108,14 +108,14 @@ function Categories({ data }: { data: Category[] }) {
 
       {/* visible one */}
       <div
-        className="flex flex-nowrap items-center mx-auto"
+        className=" category "
         ref={containerRef}
         onMouseEnter={() => setIsAnyHovered(true)}
         onMouseLeave={() => setIsAnyHovered(false)}
       >
         {data.slice(0, visibleCount).map((e: Category) => (
           <div
-            className="[&:not(:last-child)]:mr-3 md:[&:not(:last-child)]:mr-3 "
+            className="[&:not(:last-child)]:mr-3 md:[&:not(:last-child)]:mr-3  "
             key={e.id}
           >
             <Link

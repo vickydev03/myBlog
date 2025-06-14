@@ -28,7 +28,7 @@ export function RichText({ data, className }: RichTextProps) {
   useEffect(() => {
     const images = containerRef.current?.querySelectorAll("img");
     images?.forEach((img) => {
-      
+      img.classList.add("shadow-lg")
       
       img.setAttribute("loading", "lazy");
     });

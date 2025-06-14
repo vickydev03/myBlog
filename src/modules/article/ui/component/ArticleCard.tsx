@@ -10,7 +10,7 @@ interface Props {
   data: {
     id: string;
     slug: string;
-    author: User & { image: Media };
+    author: User & { image?: Media };
     description: string;
     poster: Media;
     title: string;

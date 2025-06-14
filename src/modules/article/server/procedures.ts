@@ -157,21 +157,41 @@ export const ArticleRouter = createTRPCRouter({
           page: input.cursor,
           limit: input.limit,
         });
+        console.log(data, "base");
 
         // Transform the data to ensure correct types
+        // const transformedDocs = data.docs
+        //   .filter(
+        //     (doc) =>
+        //       typeof doc.author === "object" &&
+        //       doc.author &&
+        //       "image" in doc.author &&
+        //       typeof doc.poster === "object" &&
+        //       doc.poster
+        //   )
+        //   .map((doc) => ({
+        //     ...doc,
+        //     createdAt: new Date(doc.createdAt),
+        //     author: doc.author as User & { image: Media },
+        //     poster: doc.poster as Media,
+        //     tags: Array.isArray(doc.tags)
+        //       ? doc.tags.filter(
+        //           (tag): tag is Tag => typeof tag === "object" && tag !== null
+        //         )
+        //       : [],
+        //   }));
         const transformedDocs = data.docs
           .filter(
             (doc) =>
               typeof doc.author === "object" &&
               doc.author &&
-              "image" in doc.author &&
               typeof doc.poster === "object" &&
               doc.poster
           )
           .map((doc) => ({
             ...doc,
             createdAt: new Date(doc.createdAt),
-            author: doc.author as User & { image: Media },
+            author: doc.author as User & { image?: Media } ,// or include `image` only if it exists
             poster: doc.poster as Media,
             tags: Array.isArray(doc.tags)
               ? doc.tags.filter(
@@ -179,6 +199,7 @@ export const ArticleRouter = createTRPCRouter({
                 )
               : [],
           }));
+        console.log(transformedDocs, "many");
 
         return {
           ...data,

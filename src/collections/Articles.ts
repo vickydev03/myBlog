@@ -6,6 +6,8 @@ export const Articles: CollectionConfig = {
 
   access: {
     read: ({ req }) => {
+      console.log(req.user,"iamuser");
+      
       if (isAdmin(req.user)) return true;
       return {
         _status: {

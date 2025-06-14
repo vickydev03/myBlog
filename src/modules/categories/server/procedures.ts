@@ -37,6 +37,7 @@ export const categoriesRouter = createTRPCRouter({
     .query(async ({ ctx, input }) => {
       const data = await ctx.payload.find({
         collection: "categories",
+        sort:"-createdAt",
         limit: 1,
         where: {
           slug: {
