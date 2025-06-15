@@ -4,7 +4,6 @@ import { NuqsAdapter } from "nuqs/adapters/next/app";
 import "./globals.css";
 import { TRPCReactProvider } from "@/trpc/client";
 import ClientProviders from "@/components/ClientProviders";
-import Script from "next/script";
 import { GoogleAnalytics } from "@next/third-parties/google";
 const lora = Lora({
   variable: "--font-lora",
