@@ -56,14 +56,13 @@ export default function RootLayout({
           src="https://www.googletagmanager.com/gtag/js?id=G-EYB0HE5G5T"
           strategy="afterInteractive"
         />
-        <Script
-          id="google-analytics"
-          strategy="afterInteractive"
-        >{`window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-EYB0HE5G5T')`}</Script>
-      </head> 
+        <Script id="google-analytics" strategy="afterInteractive">{`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-EYB0HE5G5T');
+        `}</Script>
+      </head>
       <body className={lora.className}>
         <GoogleAnalytics gaId="G-EYB0HE5G5T" />
         <NuqsAdapter>
