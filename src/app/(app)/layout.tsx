@@ -10,7 +10,7 @@ const lora = Lora({
   subsets: ["latin"],
   display: "swap",
 });
-import Script from "next/script";
+// import Script from "next/script";
 export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_APP_URL ?? "https://finoblitz.com"
