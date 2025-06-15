@@ -63,7 +63,7 @@ export default function RootLayout({
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-EYB0HE5G5T')`}</Script>
-      </head>
+      </head> 
       <body className={lora.className}>
         <GoogleAnalytics gaId="G-EYB0HE5G5T" />
         <NuqsAdapter>
