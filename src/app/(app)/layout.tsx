@@ -52,11 +52,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={lora.className}>
+        <GoogleAnalytics gaId="G-EYB0HE5G5T" />
         <NuqsAdapter>
           <TRPCReactProvider>
-            <ClientProviders>
-              {children} <GoogleAnalytics gaId="G-EYB0HE5G5T" />
-            </ClientProviders>
+            <ClientProviders>{children}</ClientProviders>
           </TRPCReactProvider>
         </NuqsAdapter>
       </body>
