@@ -51,7 +51,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
+      {/* <head>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-EYB0HE5G5T"
           strategy="afterInteractive"
@@ -62,7 +62,7 @@ export default function RootLayout({
           gtag('js', new Date());
           gtag('config', 'G-EYB0HE5G5T');
         `}</Script>
-      </head>
+      </head> */}
       <body className={lora.className}>
         <GoogleAnalytics gaId="G-EYB0HE5G5T" />
         <NuqsAdapter>

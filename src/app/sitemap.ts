@@ -4,6 +4,10 @@ import config from "@payload-config";
 
 export const dynamic = "force-dynamic";
 
+function escapeXml(str: string): string {
+  return str.replace(/&/g, "&amp;");
+}
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const payload = await getPayload({ config });
 
@@ -11,19 +15,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   if (!baseUrl) {
     throw new Error("NEXT_PUBLIC_APP_URL environment variable is not set");
   }
-  if (!baseUrl) {
-    throw new Error("NEXT_PUBLIC_APP_URL environment variable is not set");
-  }
 
   // Static pages
   const staticPages = [
     {
-      url: `${baseUrl}/about`,
+      url: escapeXml(`${baseUrl}/about`),
       lastModified: new Date(),
       priority: 0.5,
     },
     {
-      url: `${baseUrl}/contact-us`,
+      url: escapeXml(`${baseUrl}/contact-us`),
       lastModified: new Date(),
       priority: 0.5,
     },
@@ -42,13 +43,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   });
 
   const postUrls = posts.docs.map(({ slug, updatedAt }) => ({
-    url: `${baseUrl}/post/${slug}`,
+    url: escapeXml(`${baseUrl}/post/${slug}`),
     lastModified: new Date(updatedAt),
     priority: 0.8,
   }));
 
   const categoryUrls = categories.docs.map(({ slug, updatedAt }) => ({
-    url: `${baseUrl}/category/${slug}`,
+    url: escapeXml(`${baseUrl}/category/${slug}`),
     lastModified: new Date(updatedAt),
     priority: 0.6,
   }));
