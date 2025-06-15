@@ -10,7 +10,7 @@ export default function Footer() {
         <div className="text-gray-800 font-semibold text-lg">
           <MyLogo width="100" height="40" />
         </div>
-    
+
         {/* Navigation */}
         <div className="flex space-x-6 text-sm text-gray-600">
           <Link href="/" className="hover:text-gray-900 transition">
@@ -30,6 +30,7 @@ export default function Footer() {
           <a
             href="https://x.com/FinoBlitz?t=p5qiLi_RN1qqUOyeas5mFA&s=09"
             target="_blank"
+            rel="noopener noreferrer"
             aria-label="X"
             className="text-gray-500 hover:text-gray-800 transition"
           >
@@ -52,7 +53,7 @@ export default function Footer() {
 
           {/* Gmail */}
           <a
-            href="finoblitz@gmail.com"
+            href="mailto:finoblitz@gmail.com"
             aria-label="Gmail"
             className="text-gray-500 hover:text-gray-800 transition"
           >

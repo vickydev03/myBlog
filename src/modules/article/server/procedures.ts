@@ -157,7 +157,7 @@ export const ArticleRouter = createTRPCRouter({
           page: input.cursor,
           limit: input.limit,
         });
-        console.log(data, "base");
+        // console.debug("[Article:getMany] raw payload", data);
 
         // Transform the data to ensure correct types
         // const transformedDocs = data.docs
@@ -191,7 +191,7 @@ export const ArticleRouter = createTRPCRouter({
           .map((doc) => ({
             ...doc,
             createdAt: new Date(doc.createdAt),
-            author: doc.author as User & { image?: Media } ,// or include `image` only if it exists
+            author: doc.author as User & { image?: Media }, // or include `image` only if it exists
             poster: doc.poster as Media,
             tags: Array.isArray(doc.tags)
               ? doc.tags.filter(
@@ -199,7 +199,7 @@ export const ArticleRouter = createTRPCRouter({
                 )
               : [],
           }));
-        console.log(transformedDocs, "many");
+        // console.log(transformedDocs, "many");
 
         return {
           ...data,

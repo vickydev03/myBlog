@@ -3,14 +3,14 @@ import { caller } from "@/trpc/server";
 import { Metadata } from "next";
 import { redirect } from "next/navigation";
 import React from "react";
-export const dynamic='force-dynamic'
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Create Your Finoblitz Account – Start Your Financial Journey",
   description:
     "Sign up on Finoblitz to access financial insights, smart money strategies, and your personalized dashboard.",
   robots: {
-    index: true,  // Allow indexing
+    index: true, // Allow indexing
     follow: true,
   },
   openGraph: {
@@ -37,12 +37,11 @@ export const metadata: Metadata = {
   },
 };
 
-
 async function page() {
   const session = await caller.auth.session();
-    if(session.user){
-        redirect("/")
-    }
+  if (session?.user) {
+    redirect("/");
+  }
   return <SignupView />;
 }
 

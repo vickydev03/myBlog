@@ -4,7 +4,8 @@ import { NuqsAdapter } from "nuqs/adapters/next/app";
 import "./globals.css";
 import { TRPCReactProvider } from "@/trpc/client";
 import ClientProviders from "@/components/ClientProviders";
-
+import Script from "next/script";
+import { GoogleAnalytics } from "@next/third-parties/google";
 const lora = Lora({
   variable: "--font-lora",
   subsets: ["latin"],
@@ -54,7 +55,9 @@ export default function RootLayout({
       <body className={lora.className}>
         <NuqsAdapter>
           <TRPCReactProvider>
-            <ClientProviders>{children}</ClientProviders>
+            <ClientProviders>
+              {children} <GoogleAnalytics gaId="G-EYB0HE5G5T" />
+            </ClientProviders>
           </TRPCReactProvider>
         </NuqsAdapter>
       </body>

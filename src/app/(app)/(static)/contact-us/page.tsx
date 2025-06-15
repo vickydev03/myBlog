@@ -19,7 +19,7 @@ export const metadata = {
     "content marketing for startups",
   ].join(", "),
   alternates: {
-    canonical: "https://finoblitz.com/contact",
+    canonical: "https://finoblitz.com/contact-us",
   },
   openGraph: {
     title: "Promote Your Business with FinoBlitz | Contact Us",
@@ -243,7 +243,7 @@ export default function ContactPage() {
             of business and finance professionals.
           </p>
           <a
-            href="mailto:promotions@finoblitz.com"
+            href="mailto:finoblitz03@gmail.com"
             className="font-lora inline-flex items-center gap-2 bg-blue-600 text-white py-3 px-8 rounded-md hover:bg-blue-700 transition-colors"
           >
             <Mail className="h-5 w-5" />

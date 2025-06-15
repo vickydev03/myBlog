@@ -6,8 +6,11 @@ export const Articles: CollectionConfig = {
 
   access: {
     read: ({ req }) => {
-      console.log(req.user,"iamuser");
-      
+      if (process.env.NODE_ENV !== "production") {
+        // NOTE: remove once debugging is complete
+        console.debug("iamuser", req.user);
+      }
+
       if (isAdmin(req.user)) return true;
       return {
         _status: {

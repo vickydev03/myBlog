@@ -7,7 +7,13 @@ export const dynamic = "force-dynamic";
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const payload = await getPayload({ config });
 
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL;
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL!;
+  if (!baseUrl) {
+    throw new Error("NEXT_PUBLIC_APP_URL environment variable is not set");
+  }
+  if (!baseUrl) {
+    throw new Error("NEXT_PUBLIC_APP_URL environment variable is not set");
+  }
 
   // Static pages
   const staticPages = [
