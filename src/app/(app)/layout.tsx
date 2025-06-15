@@ -10,7 +10,7 @@ const lora = Lora({
   subsets: ["latin"],
   display: "swap",
 });
-
+import Script from "next/script";
 export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_APP_URL ?? "https://finoblitz.com"
@@ -51,6 +51,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-EYB0HE5G5T"
+          strategy="afterInteractive"
+        />
+        <Script>{`window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EYB0HE5G5T')`}</Script>
+      </head>
       <body className={lora.className}>
         <GoogleAnalytics gaId="G-EYB0HE5G5T" />
         <NuqsAdapter>
