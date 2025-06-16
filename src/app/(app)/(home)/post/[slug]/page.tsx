@@ -20,7 +20,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  
+
   try {
     const data = await fetchArticleBySlug(slug);
 
@@ -108,12 +108,14 @@ async function page({ params }: { params: Promise<{ slug: string }> }) {
     return notFound();
   }
   return (
-    <HydrationBoundary state={dehydrate(queryClient)}>
-      <Suspense fallback={<ArticleSkeleton />}>
-        <ArticleViewOne slug={slug} />
-        <Footer />
-      </Suspense>
-    </HydrationBoundary>
+    <>
+      <HydrationBoundary state={dehydrate(queryClient)}>
+        <Suspense fallback={<ArticleSkeleton />}>
+          <ArticleViewOne slug={slug} />
+          <Footer />
+        </Suspense>
+      </HydrationBoundary>
+    </>
   );
 }
 

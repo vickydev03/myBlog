@@ -7,11 +7,7 @@ const payload = await getPayload({
   config: configPromise,
 });
 
-export const getCachedArticles = (
-  where: Where,
-  page: number,
-  limit: number
-) =>
+export const getCachedArticles = (where: Where, page: number, limit: number) =>
   unstable_cache(
     async () => {
       return await payload.find({
@@ -38,8 +34,7 @@ export const getCachedArticles = (
     }
   )();
 
-
-export const getCachedArticleBySlug = (slug: string,where:Where) =>
+export const getCachedArticleBySlug = (slug: string, where: Where) =>
   unstable_cache(
     async () => {
       const article = await payload.find({
@@ -55,13 +50,14 @@ export const getCachedArticleBySlug = (slug: string,where:Where) =>
           category: true,
           slug: true,
           createdAt: true,
+          updatedAt: true,
           "read-time": true,
           tags: true,
           description: true,
         },
       });
 
-      return article
+      return article;
     },
     [`article-${slug}-${where}`], // Cache key
     { revalidate: 60 } // 1-minute revalidation
