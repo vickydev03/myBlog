@@ -756,15 +756,15 @@ html.lenis {
 
   /* gap: ; */
 }
-@media (min-width: 340px) and (max-width: 460px) {
+@media (min-width: 340px) and (max-width: 407px) {
   .category {
-    gap: 0.8rem;
-    font-size: 15px;
+    gap: 0rem;
+    font-size: 12px;
   }
 }
 /* @media (min-width: 460px) and (max-width: 520px) {
   .category {
     /* gap: 0.5rem; */
-    /* font-size: 5px; */
-  /* } */
+/* font-size: 5px; */
+/* } */
 /* }  */

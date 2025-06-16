@@ -75,7 +75,7 @@ function Navbar() {
       className="flex justify-between items-center navbar t px-4 py-[2px] b xl:py-5 dark:dark-b "
     >
       <div className="flex items-center justify-center gap-4 ">
-        <Link href={"/"}>
+        <Link href={"/"} aria-label="FinoBlitz">
           {/* <h2 className="font-bold  text-4xl flex items-center justify-center "> */}
           <MyLogo width={"178"} height="44" />
           {/* </h2> */}

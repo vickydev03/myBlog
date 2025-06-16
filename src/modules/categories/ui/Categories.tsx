@@ -89,12 +89,12 @@ function Categories({ data }: { data: Category[] }) {
         style={{ position: "fixed", top: -9999, left: -9999 }}
       >
         {/* hiddden meausre ref */}
-        {data.map((e: Category) => {
+        {data.slice(0, visibleCount+3).map((e: Category) => {
           return (
             <div
               key={e.id}
               className={cn(
-                "relative [&:not(:last-child)]:mr-3 md:[&:not(:last-child)]:mr-3 opacity-0 ",
+                "relative [&:not(:last-child)]:mr-3 md:[&:not(:last-child)]:mr-3  ",
                 params.category === e.slug && "underline underline-offset-4"
               )}
             >
@@ -141,7 +141,7 @@ function Categories({ data }: { data: Category[] }) {
                 "bg-white border-primary"
             )}
           >
-            <span className="hidden md:block">Explore</span>
+            <span className="">Explore</span>
             <ListFilterIcon className="ml-2" />
           </Button>
         </div>

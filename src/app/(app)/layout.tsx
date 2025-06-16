@@ -13,7 +13,7 @@ const lora = Lora({
 // import Script from "next/script";
 import { Analytics } from "@vercel/analytics/react";
 // import { SpeedInsights } from "@vercel/speed-insights/react";
-import { Toaster } from "sonner";
+import ClientProviders from "@/components/ClientProviders";
 
 export const metadata: Metadata = {
   metadataBase: new URL(
@@ -76,9 +76,7 @@ export default function RootLayout({
         <Analytics />
         <NuqsAdapter>
           <TRPCReactProvider>
-            {/* <ClientProviders>{children}</ClientProviders> */}
-            {children}
-            <Toaster />
+            <ClientProviders>{children}</ClientProviders>
           </TRPCReactProvider>
         </NuqsAdapter>
       </body>
