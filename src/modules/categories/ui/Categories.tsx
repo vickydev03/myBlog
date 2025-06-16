@@ -94,7 +94,7 @@ function Categories({ data }: { data: Category[] }) {
             <div
               key={e.id}
               className={cn(
-                "relative [&:not(:last-child)]:mr-3 md:[&:not(:last-child)]:mr-3 hidden ",
+                "relative [&:not(:last-child)]:mr-3 md:[&:not(:last-child)]:mr-3 opacity-0 ",
                 params.category === e.slug && "underline underline-offset-4"
               )}
             >
