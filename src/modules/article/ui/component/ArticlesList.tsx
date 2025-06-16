@@ -10,7 +10,9 @@ import { useArticleFilters } from "../../hooks/useArticleFilterHook";
 // import Footer from "@/app/(app)/(home)/_component/Footer";
 import dynamic from "next/dynamic";
 const Footer = dynamic(() => import("@/app/(app)/(home)/_component/Footer"));
-const ArticleCard = dynamic(() => import("./ArticleCard"));
+// const ArticleCard = dynamic(() => import("./ArticleCard"));
+import ArticleCard from "./ArticleCard";
+
 // import { trpc } from "@/trpc/server";
 // interface Props {
 //   id: string;
