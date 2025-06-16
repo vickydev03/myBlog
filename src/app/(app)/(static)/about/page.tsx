@@ -45,9 +45,9 @@ export default function AboutPage() {
           <Image
             src="/images/about-hero.jpg"
             alt="FinoBlitz - Empowering professionals through knowledge"
+            priority
             fill
             className="object-cover brightness-[0.85]"
-            priority
           />
           <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
             <h1 className="font-lora text-4xl md:text-6xl font-bold text-white mb-4">

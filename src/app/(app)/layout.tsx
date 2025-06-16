@@ -11,6 +11,9 @@ const lora = Lora({
   display: "swap",
 });
 // import Script from "next/script";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
+
 export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_APP_URL ?? "https://finoblitz.com"
@@ -31,12 +34,12 @@ export const metadata: Metadata = {
     "Quant finance",
     "Loan & Credit",
   ],
-  
+
   authors: [{ name: "FinoBlitz Team", url: "https://finoblitz.com" }],
   description:
     "FinoBlitz shares sharp insights on finance, tech, AI, and business to help startups and pros grow smarter using modern tools and strategies.",
   creator: "FinoBiltz team",
-  
+
   twitter: {
     card: "summary_large_image",
     title: "FinoBlitz",
@@ -67,6 +70,9 @@ export default function RootLayout({
       </head> */}
       <body className={lora.className}>
         <GoogleAnalytics gaId="G-EYB0HE5G5T" />
+
+        <SpeedInsights />
+        <Analytics />
         <NuqsAdapter>
           <TRPCReactProvider>
             <ClientProviders>{children}</ClientProviders>
