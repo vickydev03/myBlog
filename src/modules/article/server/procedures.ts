@@ -4,6 +4,7 @@ import { z } from "zod";
 import type { Where } from "payload";
 import { DEFAULT_LIMIT } from "@/constant";
 import { TRPCError } from "@trpc/server";
+import { getCachedArticleBySlug, getCachedArticles } from "@/lib/getcatchedArticles";
 
 export const ArticleRouter = createTRPCRouter({
   getOne: baseProcedure
@@ -12,7 +13,7 @@ export const ArticleRouter = createTRPCRouter({
         slug: z.string(),
       })
     )
-    .query(async ({ ctx, input }) => {
+    .query(async ({input }) => {
       try {
         const where: Where = {
           and: [
@@ -28,26 +29,27 @@ export const ArticleRouter = createTRPCRouter({
             },
           ],
         };
+        const data=await getCachedArticleBySlug(input.slug,where)
+        // const data = await ctx.payload.find({
+        //   collection: "articles",
+        //   where,
+        //   limit: 1,
+        //   select: {
+        //     meta: true,
+        //     content: true,
+        //     poster: true,
+        //     title: true,
+        //     author: true,
+        //     category: true,
+        //     slug: true,
+        //     createdAt: true,
+        //     "read-time": true,
+        //     tags: true,
+        //     description: true,
+        //   },
+        // });
 
-        const data = await ctx.payload.find({
-          collection: "articles",
-          where,
-          limit: 1,
-          select: {
-            meta: true,
-            content: true,
-            poster: true,
-            title: true,
-            author: true,
-            category: true,
-            slug: true,
-            createdAt: true,
-            "read-time": true,
-            tags: true,
-            description: true,
-          },
-        });
-
+        // const data=
         if (!data.docs[0]) {
           throw new TRPCError({
             code: "NOT_FOUND",
@@ -140,23 +142,27 @@ export const ArticleRouter = createTRPCRouter({
       }
 
       try {
-        const data = await ctx.payload.find({
-          collection: "articles",
-          sort: "-createdAt",
-          depth: 3,
-          where,
-          select: {
-            author: true,
-            description: true,
-            slug: true,
-            poster: true,
-            title: true,
-            createdAt: true,
-            tags: true,
-          },
-          page: input.cursor,
-          limit: input.limit,
-        });
+        // const data =
+        //  await ctx.payload.find({
+        //   collection: "articles",
+        //   sort: "-createdAt",
+        //   depth: 3,
+        //   where,
+        //   select: {
+        //     author: true,
+        //     description: true,
+        //     slug: true,
+        //     poster: true,
+        //     title: true,
+        //     createdAt: true,
+        //     tags: true,
+        //   },
+        //   page: input.cursor,
+        //   limit: input.limit,
+        // });
+
+        const data = await getCachedArticles(where, input.cursor, input.limit);
+
         // console.debug("[Article:getMany] raw payload", data);
 
         // Transform the data to ensure correct types

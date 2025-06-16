@@ -84,7 +84,7 @@ function Categories({ data }: { data: Category[] }) {
         data={data}
       />
       <div
-        className=" absolute top-9999 opacity-0 pointer-events-none flex "
+        className=" absolute top-9999 opacity-0 pointer-events-none flex category "
         ref={measureRef}
         style={{ position: "fixed", top: -9999, left: -9999 }}
       >
@@ -94,7 +94,7 @@ function Categories({ data }: { data: Category[] }) {
             <div
               key={e.id}
               className={cn(
-                "relative",
+                "relative [&:not(:last-child)]:mr-3 md:[&:not(:last-child)]:mr-3 ",
                 params.category === e.slug && "underline underline-offset-4"
               )}
             >

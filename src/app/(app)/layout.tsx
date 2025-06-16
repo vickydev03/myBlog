@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_APP_URL ?? "https://finoblitz.com"
   ),
-  title: "",
+  title: "FinoBlitz",
   applicationName: "FinoBlitz",
   keywords: [
     "Finance",
@@ -31,10 +31,12 @@ export const metadata: Metadata = {
     "Quant finance",
     "Loan & Credit",
   ],
+  
   authors: [{ name: "FinoBlitz Team", url: "https://finoblitz.com" }],
   description:
     "FinoBlitz shares sharp insights on finance, tech, AI, and business to help startups and pros grow smarter using modern tools and strategies.",
   creator: "FinoBiltz team",
+  
   twitter: {
     card: "summary_large_image",
     title: "FinoBlitz",
