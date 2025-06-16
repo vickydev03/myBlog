@@ -32,8 +32,7 @@ async function page() {
         </div>
         <aside className=" article-sidebar hidden md:block  md:col-span-3 lg:col-spans-2 sticky top-0 h-dvh">
           <Suspense fallback={<ArticleSidebarSkeleton />}>
-            <ArticleSidebarS />
-            
+            <ArticleSidebar />
           </Suspense>
         </aside>
       </div>
