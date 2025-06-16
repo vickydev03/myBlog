@@ -12,7 +12,8 @@ const lora = Lora({
 });
 // import Script from "next/script";
 import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/react";
+// import { SpeedInsights } from "@vercel/speed-insights/react";
+import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
   metadataBase: new URL(
@@ -71,11 +72,13 @@ export default function RootLayout({
       <body className={lora.className}>
         <GoogleAnalytics gaId="G-EYB0HE5G5T" />
 
-        <SpeedInsights />
+        {/* <SpeedInsights /> */}
         <Analytics />
         <NuqsAdapter>
           <TRPCReactProvider>
-            <ClientProviders>{children}</ClientProviders>
+            {/* <ClientProviders>{children}</ClientProviders> */}
+            {children}
+            <Toaster />
           </TRPCReactProvider>
         </NuqsAdapter>
       </body>
