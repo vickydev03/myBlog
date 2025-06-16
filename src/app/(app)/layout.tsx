@@ -3,7 +3,7 @@ import { Lora } from "next/font/google";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 import "./globals.css";
 import { TRPCReactProvider } from "@/trpc/client";
-import ClientProviders from "@/components/ClientProviders";
+// import ClientProviders from "@/components/ClientProviders";
 import { GoogleAnalytics } from "@next/third-parties/google";
 const lora = Lora({
   variable: "--font-lora",
