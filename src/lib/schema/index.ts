@@ -1,3 +1,4 @@
+import { S3_ENDPOINT } from "@/constant";
 import { Media, Article, User } from "@/payload-types";
 
 // import type{} from ""
@@ -12,7 +13,7 @@ export const ArticleSchema = (props: Article) => {
     headline: props.title,
     datePublished: new Date(props.createdAt),
     dateModified: new Date(props.updatedAt),
-    image: [`${process.env.S3_ENDPOINT}/${image.filename}`],
+    image: [`${S3_ENDPOINT}/${image.filename}`],
     author: {
         "@type": "Person",
         name: author.name,
@@ -26,7 +27,7 @@ export const imageSchema = (props: Media) => {
     return {
       "@context": "https://finoblitz.com",
       "@type": "ImageObject",
-      contentUrl: `${process.env.S3_ENDPOINT}/${props.filename}`,
+      contentUrl: `${S3_ENDPOINT}/${props.filename}`,
       alt:props.alt
     }
   }
