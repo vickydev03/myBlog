@@ -1,7 +1,9 @@
 "use client";
 import { DEFAULT_LIMIT } from "@/constant";
 import { useTRPC } from "@/trpc/client";
-import { useInfiniteQuery } from "@tanstack/react-query";
+import {
+  useSuspenseInfiniteQuery,
+} from "@tanstack/react-query";
 import React, { useEffect, useRef } from "react";
 // import ArticleCard from "./ArticleCard";
 import { InboxIcon } from "lucide-react";
@@ -12,25 +14,12 @@ import dynamic from "next/dynamic";
 const Footer = dynamic(() => import("@/app/(app)/(home)/_component/Footer"));
 // const ArticleCard = dynamic(() => import("./ArticleCard"));
 import ArticleCard from "./ArticleCard";
-import { Loader } from "./Articles";
-
-// import { trpc } from "@/trpc/server";
-// interface Props {
-//   id: string;
-//   slug: string;
-//   author: User & { image: Media };
-//   description: string;
-//   poster: Media;
-//   title: string;
-//   tags: Tag[];
-//   createdAt: Date;
-// }
 
 function ArticlesList({ categorySlug }: { categorySlug?: string }) {
   const trpc = useTRPC();
   const [filters] = useArticleFilters();
-  const { data, fetchNextPage, hasNextPage, isFetchingNextPage,isLoading } =
-    useInfiniteQuery(
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
+    useSuspenseInfiniteQuery(
       trpc.articles.getMany.infiniteQueryOptions(
         {
           limit: DEFAULT_LIMIT,
@@ -46,8 +35,6 @@ function ArticlesList({ categorySlug }: { categorySlug?: string }) {
         }
       )
     );
-  console.log(data, "server data");
-
   const loadMoreRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -81,7 +68,7 @@ function ArticlesList({ categorySlug }: { categorySlug?: string }) {
     );
   }
 
-  if(isLoading) return <Loader/>
+  // if(isLoading) return <Loader/>
 
   return (
     <div className="w-full bg-gray-5000">
@@ -103,8 +90,6 @@ function ArticlesList({ categorySlug }: { categorySlug?: string }) {
       {isFetchingNextPage && hasNextPage && (
         <p className="text-center py-4 text-gray-500">Loading more...</p>
       )}
-
-      
 
       {!hasNextPage && (
         <div className="md:hidden h-5  bg-red-4000">

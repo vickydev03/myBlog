@@ -211,13 +211,15 @@ export const ArticleRouter = createTRPCRouter({
         // console.log(transformedDocs, "many");
         console.log({
           docsLength: transformedDocs.length,
-          nextPage: data.nextPage,
-          hasNextPage:
-            data.nextPage !== null && data.docs.length === input.limit,
-          originalHasNextPage: data.hasNextPage,
           page: data.page,
           totalPages: data.totalPages,
+          hasNextPage: data.hasNextPage,
+          nextPage: data.nextPage,
+          inputCursor: input.cursor,
+          inputLimit: input.limit,
         });
+
+       
         return {
           ...data,
           docs: transformedDocs,

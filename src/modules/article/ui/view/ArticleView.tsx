@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import React, { Suspense } from "react";
 // import { Loader } from "../component/Articles";
+// import { Loader } from "../component/Articles";
 const Categories = dynamic(() => import("@/modules/categories/ui/Categories"));
 const Articles = dynamic(() => import("../component/Articles"));
 // import Articles from "../component/Articles";
