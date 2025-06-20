@@ -376,7 +376,7 @@ ul {
   }
 
   .content h3 {
-    font-size: 1rem;
+    font-size: 1.1rem;
     color: #4a404a;
     letter-spacing: 1px;
     font-weight: bold;
@@ -756,6 +756,7 @@ html.lenis {
 
   /* gap: ; */
 }
+
 @media (min-width: 340px) and (max-width: 407px) {
   .category {
     gap: 0rem;
@@ -768,3 +769,11 @@ html.lenis {
 /* font-size: 5px; */
 /* } */
 /* }  */
+
+ol {
+  list-style-type: lower-roman;
+  padding-left: 40px;
+  margin-left: 0;
+  line-height: 28px;
+  color: #4a404a;
+}

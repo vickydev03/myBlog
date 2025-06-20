@@ -10,7 +10,7 @@ import { format } from "date-fns";
 import { Media } from "@/payload-types";
 import { motion } from "motion/react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { ArticleSchema, imageSchema } from "@/lib/schema/index";
+import { ArticleSchema, imageSchema,LogoSchema } from "@/lib/schema/index";
 import Script from "next/script";
 // import {Richt}
 const monts = Inter({
@@ -60,7 +60,7 @@ function ArticleViewOne({ slug }: { slug: string }) {
       currentPostSlug: slug,
     })
   );
-  const schema = [ArticleSchema(data), imageSchema(data?.meta?.image)];
+  const schema = [ArticleSchema(data), imageSchema(data?.meta?.image),LogoSchema];
 
   // let x:DataProps=data
 
@@ -259,35 +259,68 @@ export default ArticleViewOne;
 
 export const ArticleSkeleton = () => {
   return (
-    <div className="content border-b pb-10 max-w-3xl mx-auto animate-pulse">
-      <div className="w-full mx-auto px-4 md:px-0 py-6 space-y-6">
-        {/* Title */}
-        <div className="h-9 bg-gray-200 rounded w-3/4" />
+    // <div className="content  pb-10 max-w-3xl mx-auto animate-pulse">
+    //   <div className="w-full mx-auto px-4 md:px-0 py-6 space-y-6">
+    //     {/* Title */}
+    //     <div className="h-9 bg-gray-200 rounded w-3/4" />
 
-        {/* Description */}
-        <div className="h-5 bg-gray-200 rounded w-full" />
+    //     {/* Description */}
+    //     <div className="h-5 bg-gray-200 rounded w-full" />
 
-        {/* Author Section */}
-        <div className="flex items-center gap-6 pt-4">
-          <div className="w-8 h-8 rounded-full bg-gray-300" />
-          <div className="h-4 w-24 bg-gray-200 rounded" />
-          <div className="h-4 w-16 bg-gray-200 rounded" />
-          <div className="h-4 w-20 bg-gray-200 rounded" />
-        </div>
+    //     {/* Author Section */}
+    //     <div className="flex items-center gap-6 pt-4">
+    //       <div className="w-8 h-8 rounded-full bg-gray-300" />
+    //       <div className="h-4 w-24 bg-gray-200 rounded" />
+    //       <div className="h-4 w-16 bg-gray-200 rounded" />
+    //       <div className="h-4 w-20 bg-gray-200 rounded" />
+    //     </div>
 
-        {/* Main Image Placeholder */}
-        <div className="w-full aspect-video bg-gray-300 rounded-lg" />
+    //     {/* Main Image Placeholder */}
+    //     <div className="w-full aspect-video bg-gray-300 rounded-lg" />
 
-        {/* Rich Text Placeholder (Paragraph lines) */}
-        <div className="space-y-3 pt-4">
-          <div className="h-4 bg-gray-200 rounded w-full" />
-          <div className="h-4 bg-gray-200 rounded w-11/12" />
-          <div className="h-4 bg-gray-200 rounded w-10/12" />
-          <div className="h-4 bg-gray-200 rounded w-9/12" />
-          <div className="h-4 bg-gray-200 rounded w-full" />
-          <div className="h-4 bg-gray-200 rounded w-8/12" />
-        </div>
+    //     {/* Rich Text Placeholder (Paragraph lines) */}
+    //     <div className="space-y-3 pt-4">
+    //       <div className="h-4 bg-gray-200 rounded w-full" />
+    //       <div className="h-4 bg-gray-200 rounded w-11/12" />
+    //       <div className="h-4 bg-gray-200 rounded w-10/12" />
+    //       <div className="h-4 bg-gray-200 rounded w-9/12" />
+    //       <div className="h-4 bg-gray-200 rounded w-full" />
+    //       <div className="h-4 bg-gray-200 rounded w-8/12" />
+    //     </div>
+    //   </div>
+    // </div>
+
+    <div className="content pb-12 px-4 sm:px-6 animate-pulse max-w-3xl mx-auto">
+  <div className="w-full py-8 space-y-8">
+    {/* Title */}
+    <div className="h-10 bg-gray-200 rounded w-4/5 sm:w-3/4" />
+
+    {/* Description */}
+    <div className="h-6 bg-gray-200 rounded w-full" />
+
+    {/* Author Section */}
+    <div className="flex items-center gap-4 pt-6">
+      <div className="w-10 h-10 rounded-full bg-gray-300" />
+      <div className="flex flex-col gap-2">
+        <div className="h-4 w-24 bg-gray-200 rounded" />
+        <div className="h-4 w-16 bg-gray-200 rounded" />
       </div>
     </div>
+
+    {/* Main Image Placeholder */}
+    <div className="w-full aspect-video bg-gray-300 rounded-xl" />
+
+    {/* Rich Text Placeholder */}
+    <div className="space-y-4 pt-6">
+      <div className="h-5 bg-gray-200 rounded w-full" />
+      <div className="h-5 bg-gray-200 rounded w-11/12" />
+      <div className="h-5 bg-gray-200 rounded w-10/12" />
+      <div className="h-5 bg-gray-200 rounded w-9/12" />
+      <div className="h-5 bg-gray-200 rounded w-full" />
+      <div className="h-5 bg-gray-200 rounded w-8/12" />
+    </div>
+  </div>
+</div>
+
   );
 };

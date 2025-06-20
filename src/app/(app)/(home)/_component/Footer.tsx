@@ -4,7 +4,7 @@ import MyLogo from "./MyLogo";
 
 export default function Footer() {
   return (
-    <footer className="bg-white border-t border-gray-200   max-h-[90px] footer h-10   ">
+    <footer className="bg-white border-t border-gray-200   max-h-[90px] footer h-18 py-4  ">
       <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center space-y-3 md:space-y-0">
         {/* Brand */}
         <div className="text-gray-800 font-semibold text-lg">
@@ -25,7 +25,7 @@ export default function Footer() {
         </div>
 
         {/* Socials */}
-        <div className="flex space-x-5">
+        <div className="flex space-x-5 pb-4 md:pb-0">
           {/* X (Twitter) */}
           <a
             href="https://x.com/FinoBlitz?t=p5qiLi_RN1qqUOyeas5mFA&s=09"
