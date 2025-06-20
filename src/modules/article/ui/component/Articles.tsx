@@ -1,5 +1,5 @@
 "use client";
-import React, { Suspense } from "react";
+import React from "react";
 // import ArticlesList from "./ArticlesList";
 import dynamic from "next/dynamic";
 
@@ -9,9 +9,9 @@ import { DEFAULT_LIMIT } from "@/constant";
 
 function Articles({ categorySlug }: { categorySlug?: string }) {
   return (
-    <Suspense fallback={<Loader />}>
+    // <Suspense fallback={<Loader />}>
       <ArticlesList categorySlug={categorySlug} />
-    </Suspense>
+    // </Suspense>
   );
 }
 

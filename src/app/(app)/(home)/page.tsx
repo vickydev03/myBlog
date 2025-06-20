@@ -1,5 +1,5 @@
 import { DEFAULT_LIMIT } from "@/constant";
-import  ArticleSidebar, {
+import ArticleSidebar, {
   ArticleSidebarSkeleton,
 } from "@/modules/article/ui/component/ArticleSidebar";
 import ArticleView from "@/modules/article/ui/view/ArticleView";
@@ -19,6 +19,8 @@ async function page() {
   void queryClient.prefetchInfiniteQuery(
     trpc.articles.getMany.infiniteQueryOptions({
       limit: DEFAULT_LIMIT,
+      categorySlug: undefined,
+      search: undefined,
       tags: [],
     })
   );
@@ -27,8 +29,9 @@ async function page() {
     <HydrationBoundary state={dehydrate(queryClient)}>
       <div className="grid  grid-cols-1 sm:grid-cols-8 min-h-screen  min-w-[350px] ">
         <div className=" article-view col-span-1 sm:col-span-8 md:col-span-5 lg:col-spans-6    h-full min-w-[350px] ">
-          <ArticleView />
-          
+          <>
+            <ArticleView />
+          </>
         </div>
         <aside className=" article-sidebar hidden md:block  md:col-span-3 lg:col-spans-2 sticky top-0 h-dvh">
           <Suspense fallback={<ArticleSidebarSkeleton />}>

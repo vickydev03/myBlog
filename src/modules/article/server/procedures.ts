@@ -4,7 +4,10 @@ import { z } from "zod";
 import type { Where } from "payload";
 import { DEFAULT_LIMIT } from "@/constant";
 import { TRPCError } from "@trpc/server";
-import { getCachedArticleBySlug, getCachedArticles } from "@/lib/getcatchedArticles";
+import {
+  getCachedArticleBySlug,
+  getCachedArticles,
+} from "@/lib/getcatchedArticles";
 
 export const ArticleRouter = createTRPCRouter({
   getOne: baseProcedure
@@ -13,7 +16,7 @@ export const ArticleRouter = createTRPCRouter({
         slug: z.string(),
       })
     )
-    .query(async ({input }) => {
+    .query(async ({ input }) => {
       try {
         const where: Where = {
           and: [
@@ -29,7 +32,7 @@ export const ArticleRouter = createTRPCRouter({
             },
           ],
         };
-        const data=await getCachedArticleBySlug(input.slug,where)
+        const data = await getCachedArticleBySlug(input.slug, where);
         // const data = await ctx.payload.find({
         //   collection: "articles",
         //   where,
@@ -206,7 +209,15 @@ export const ArticleRouter = createTRPCRouter({
               : [],
           }));
         // console.log(transformedDocs, "many");
-
+        console.log({
+          docsLength: transformedDocs.length,
+          nextPage: data.nextPage,
+          hasNextPage:
+            data.nextPage !== null && data.docs.length === input.limit,
+          originalHasNextPage: data.hasNextPage,
+          page: data.page,
+          totalPages: data.totalPages,
+        });
         return {
           ...data,
           docs: transformedDocs,

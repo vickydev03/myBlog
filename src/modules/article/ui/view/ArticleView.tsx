@@ -1,11 +1,12 @@
 "use client";
 // import Categories from "@/modules/categories/ui/Categories";
 import { useTRPC } from "@/trpc/client";
-import dynamic from 'next/dynamic'
+import dynamic from "next/dynamic";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import React, { Suspense } from "react";
-const Categories=dynamic(()=>import("@/modules/categories/ui/Categories"))
-const Articles=dynamic(()=>import("../component/Articles"))
+// import { Loader } from "../component/Articles";
+const Categories = dynamic(() => import("@/modules/categories/ui/Categories"));
+const Articles = dynamic(() => import("../component/Articles"));
 // import Articles from "../component/Articles";
 
 function ArticleView({ categorySlug }: { categorySlug?: string }) {
@@ -18,8 +19,11 @@ function ArticleView({ categorySlug }: { categorySlug?: string }) {
           <Categories data={data} />
         </Suspense>
       </div>
+
       <main className="box ">
-        <Articles categorySlug={categorySlug} />
+        {/* <Suspense fallback={<Loader />}> */}
+          <Articles categorySlug={categorySlug} />
+        {/* </Suspense> */}
       </main>
     </>
   );
