@@ -22,6 +22,9 @@ export default function Footer() {
           <Link href="/contact-us" className="hover:text-gray-900 transition">
             Contact
           </Link>
+          <Link href="/privacy-policy" className="hover:text-gray-900 transition">
+          Privacy policy
+          </Link>
         </div>
 
         {/* Socials */}

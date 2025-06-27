@@ -4,7 +4,7 @@ import ArticleViewOne, {
 import { getQueryClient, trpc } from "@/trpc/server";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 import React, { Suspense } from "react";
-import Footer from "../../_component/Footer";
+// import Footer from "../../_component/Footer";
 
 import { Metadata } from "next";
 import { fetchArticleBySlug } from "@/lib/fetchArticleBySlug";
@@ -112,7 +112,7 @@ async function page({ params }: { params: Promise<{ slug: string }> }) {
       <HydrationBoundary state={dehydrate(queryClient)}>
         <Suspense fallback={<ArticleSkeleton />}>
           <ArticleViewOne slug={slug} />
-          <Footer />
+          {/* <Footer /> */}
         </Suspense>
       </HydrationBoundary>
     </>

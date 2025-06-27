@@ -10,8 +10,8 @@ import { InboxIcon } from "lucide-react";
 import Link from "next/link";
 import { useArticleFilters } from "../../hooks/useArticleFilterHook";
 // import Footer from "@/app/(app)/(home)/_component/Footer";
-import dynamic from "next/dynamic";
-const Footer = dynamic(() => import("@/app/(app)/(home)/_component/Footer"));
+// import dynamic from "next/dynamic";
+// const Footer = dynamic(() => import("@/app/(app)/(home)/_component/Footer"));
 // const ArticleCard = dynamic(() => import("./ArticleCard"));
 import ArticleCard from "./ArticleCard";
 
@@ -91,11 +91,11 @@ function ArticlesList({ categorySlug }: { categorySlug?: string }) {
         <p className="text-center py-4 text-gray-500">Loading more...</p>
       )}
 
-      {!hasNextPage && (
+      {/* {!hasNextPage && (
         <div className="md:hidden h-5  bg-red-4000">
-          <Footer />
+           <Footer /> 
         </div>
-      )}
+      )} */}
     </div>
   );
 }

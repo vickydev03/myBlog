@@ -4,10 +4,11 @@ import { Lora } from "next/font/google";
 import Navbar from "./_component/Navbar";
 import { ThemeProvider } from "next-themes";
 import { useLenis } from "./_hooks/useLenis";
+import Footer from "./_component/Footer";
 const lora = Lora({
   variable: "--font-lora",
   subsets: ["latin"],
-  display:"swap"
+  display: "swap",
 });
 
 // export const metadata: Metadata = {
@@ -26,7 +27,8 @@ export default function RootLayout({
       <div className={`${lora.className}`}>
         <Navbar />
         {children}
+        <Footer />
       </div>
-    </ThemeProvider> 
+    </ThemeProvider>
   );
 }
